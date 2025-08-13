@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import logo from "@/public/kola-logo.png"; \
+import logo from "@/public/kola-logo.png"; 
 import {
   Mail,
   Phone,
