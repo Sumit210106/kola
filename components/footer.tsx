@@ -1,164 +1,221 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowUp } from "lucide-react"
-import Image from "next/image"
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import logo from "@/public/kola-logo.png"; \
+import {
+  Mail,
+  Phone,
+  Bell,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  ArrowUp,
+  Send,
+} from "lucide-react";
 
-export default function Footer() {
+type FooterLinksType = {
+  [key: string]: string[];
+};
+
+const Footer: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-  const footerLinks = {
-    services: [
+  const footerLinks: FooterLinksType = {
+    Services: [
       "Website Development",
-      "App Development",
       "Digital Marketing",
-      "SEO Services",
+      "Search Engine Optimization",
       "Content Creation",
       "Social Media Marketing",
+      "App Development",
     ],
-    company: ["About Us", "Our Team", "Careers", "Contact", "Blog", "Case Studies"],
-    resources: ["Documentation", "Help Center", "Privacy Policy", "Terms of Service", "Cookie Policy", "Sitemap"],
-  }
+    Company: ["About Us", "Our Team", "Careers", "Press & Media", "Contact Us"],
+  };
 
-  const socialLinks = [
+  const socialLinks: { icon: React.ElementType; href: string; label: string }[] = [
     { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
     { icon: Instagram, href: "#", label: "Instagram" },
-  ]
+    { icon: Twitter, href: "#", label: "Twitter" },
+  ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="relative bg-black text-white">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-8 h-8 relative">
-                <Image src="/kola-logo.png" alt="Kola Communication" fill className="object-contain" />
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+        {/* Top Section - Company Info */}
+        <div
+          className={`grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 pb-16 border-b border-gray-800 transition-all duration-1000 transform ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+        >
+          {/* Company Brand */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-white">
+                  <Image
+                    src={logo}
+                    alt="kola communications"
+                    className="max-w-full max-h-full"
+                    width={56}
+                    height={56}
+                  />
+                </div>
               </div>
-              <span className="text-xl font-bold text-white">Kola Communication</span>
+              <div>
+                <h2 className="text-3xl text-white">Kola Communications</h2>
+              </div>
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              Transforming businesses through innovative digital solutions and strategic marketing excellence.
+            <p className="text-gray-400 leading-relaxed max-w-md">
+              Experience the future of business with intelligent, scalable
+              automation solutions tailored to your needs.
             </p>
 
             {/* Contact Info */}
-            <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-[#4F46E5]" />
-                <span className="text-gray-400">hello@kolacommunication.com</span>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer">
+                <Mail className="w-4 h-4" />
+                <span className="text-sm">business@kolacommunications.com</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-[#4F46E5]" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+              <div className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer">
+                <Phone className="w-4 h-4" />
+                <span className="text-sm">+91-8108969630</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-[#4F46E5]" />
-                <span className="text-gray-400">New York, NY 10001</span>
+              <div className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer">
+                <MapPin className="w-4 h-4" />
+                <span className="text-sm">India</span>
               </div>
             </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-bold mb-6">Services</h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-[#4F46E5] transition-colors duration-200 text-sm">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="text-lg font-bold mb-6">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-[#4F46E5] transition-colors duration-200 text-sm">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-lg font-bold mb-6">Stay Updated</h3>
-            <p className="text-gray-400 mb-4 text-sm">
-              Subscribe to our newsletter for the latest updates and insights.
-            </p>
-            <div className="space-y-3">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:ring-[#4F46E5] focus:border-[#4F46E5]"
-              />
-              <Button className="w-full bg-[#4F46E5] hover:bg-[#4338CA] text-white transition-colors duration-200">
-                Subscribe
-              </Button>
+          {/* Newsletter Subscription */}
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl text-white mb-3 flex items-center">
+                Stay Updated with our Newsletter
+                <Bell className="inline-block ml-2" size={24} />
+              </h3>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                Get the latest insights delivered to your inbox.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6953F5] focus:border-transparent transition-all text-sm placeholder-gray-500"
+                />
+                <button
+                  className="px-6 py-3 bg-gradient-to-r from-[#6953F5] to-[#17142E] hover:from-[#7C60FC] hover:to-[#2D2850] text-white rounded-lg font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <Send className="w-4 h-4" />
+                  Subscribe
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Social Links & Resources */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            {/* Social Links */}
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-400 text-sm">Follow us:</span>
-              {socialLinks.map((social, index) => {
-                const IconComponent = social.icon
-                return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#4F46E5] transition-colors duration-200 group"
-                  >
-                    <IconComponent className="w-4 h-4 text-gray-400 group-hover:text-white" />
-                  </a>
-                )
-              })}
-            </div>
+        {/* Links + Social */}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 transition-all duration-1000 delay-200 transform ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+        >
+          {/* Links Section */}
+          <div className="grid grid-cols-2 gap-8">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category} className="space-y-4">
+                <h4 className="text-white font-semibold text-sm uppercase tracking-wider">
+                  {category}
+                </h4>
+                <ul className="space-y-3">
+                  {links.map((link, index) => (
+                    <li key={index}>
+                      <a
+                        href="#"
+                        className="text-gray-400 hover:text-white transition-colors duration-200 text-sm block"
+                      >
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
 
-            {/* Resources Links */}
-            <div className="flex flex-wrap items-center gap-6 text-sm">
-              {footerLinks.resources.slice(0, 4).map((link, index) => (
-                <a key={index} href="#" className="text-gray-400 hover:text-[#4F46E5] transition-colors duration-200">
-                  {link}
+          {/* Social Links */}
+          <div className="flex flex-col items-center border border-gray-800 rounded-xl p-6 space-y-8">
+            <h4 className="text-white font-semibold text-base sm:text-lg uppercase tracking-wider text-center">
+              Follow Us
+            </h4>
+            <div className="flex flex-wrap justify-center gap-6">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="h-[60px] w-[60px] rounded-lg border border-gray-700 flex items-center justify-center 
+                 hover:bg-gradient-to-r hover:from-[#6953F5] hover:to-[#17142E] 
+                 hover:border-transparent transform hover:scale-110 
+                 transition-all duration-300 shadow-md"
+                >
+                  <Icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />
                 </a>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-gray-400 text-sm">© 2024 Kola Communication. All rights reserved.</p>
-
-          {/* Back to Top Button */}
-          <Button
-            onClick={scrollToTop}
-            variant="ghost"
-            size="sm"
-            className="text-gray-400 hover:text-[#4F46E5] hover:bg-gray-800 transition-all duration-200"
-          >
-            <ArrowUp className="w-4 h-4 mr-2" />
-            Back to Top
-          </Button>
+        {/* Bottom Section */}
+        <div
+          className={`flex flex-col md:flex-row items-center justify-between pt-8 border-t border-gray-800 transition-all duration-1000 delay-400 transform ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+        >
+          <p className="text-gray-400 text-sm mb-6 md:mb-0">
+            © {new Date().getFullYear()} Kola Communications. All rights reserved.
+          </p>
+          <div className="flex items-center space-x-2">
+            <h2 className="text-sm sm:text-base text-gray-400">
+              Developed by{" "}
+              <a
+                href="https://kolacommunications.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white hover:text-purple-400 transition-colors duration-300"
+              >
+                Kola Communications
+              </a>
+            </h2>
+          </div>
         </div>
       </div>
+
+      {/* Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-[#6953F5] to-[#17142E] hover:from-[#7C60FC] hover:to-[#2D2850] rounded-lg flex items-center justify-center shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 z-50"
+        aria-label="Scroll to top"
+      >
+        <ArrowUp className="w-5 h-5 text-white" />
+      </button>
     </footer>
-  )
-}
+  );
+};
+
+export default Footer;

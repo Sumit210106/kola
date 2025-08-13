@@ -49,13 +49,7 @@ const teamMembers = [
     role: "Creative Director",
     image: "/professional-woman-designer-headshot.png",
     bio: "Award-winning designer with a passion for user experience",
-  },
-  {
-    name: "David Kim",
-    role: "Marketing Strategist",
-    image: "/placeholder-8rbr8.png",
-    bio: "Digital marketing specialist with proven ROI track record",
-  },
+  }
 ]
 
 const stats = [

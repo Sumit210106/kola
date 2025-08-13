@@ -15,7 +15,7 @@ export default function HeroSection() {
   ]
 
   return (
-    <section id="home" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8">
+    <section id="home" className="min-h-screen flex items-center px-4 mt-25 lg:px-8 ">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Advanced Code Snippets */}
@@ -37,7 +37,7 @@ export default function HeroSection() {
                 <TypewriterEffect words={typewriterWords} />
               </span>
             </h1>
-            
+
             <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               At Kola Communication, we architect next-generation digital solutions using cutting-edge technologies like
               AI, blockchain, and cloud-native architectures. Transform your business with enterprise-grade applications
