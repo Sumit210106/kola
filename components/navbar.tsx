@@ -20,9 +20,9 @@ export default function Navbar() {
   }, [])
 
   const navItems = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "#" },
     { name: "Services", href: "#services" },
-    { name: "About", href: "/about" }, // Updated to link to separate about page
+    { name: "About", href: "#about" }, 
     { name: "Contact", href: "#contact" },
   ]
 

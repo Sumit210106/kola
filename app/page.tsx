@@ -15,9 +15,9 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ServicesSection />
+      <Scrollcounter/>
       <AboutSection />
       <Map/>
-      <Scrollcounter/>
       <Projectparallax/>
       <ContactSection />
       <Footer />
