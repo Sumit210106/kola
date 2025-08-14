@@ -179,25 +179,25 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900">Email</h4>
-                    <p className="text-gray-600">hello@kolacommunication.com</p>
+                    <p className="text-gray-600">business@kolacommunications.com</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-blue-600 rounded-2xl shadow-xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">Ready to get started?</h3>
-              <p className="text-blue-100 mb-6">
+            <div className="bg-gray-300 rounded-2xl shadow-xl p-8 text-white">
+              <h3 className="text-2xl font-bold mb-4 text-black">Ready to get started?</h3>
+              <p className="text-black mb-6">
                 Join over 500+ satisfied clients who have transformed their digital presence with Kola Communication.
               </p>
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
-                  <div className="text-3xl font-bold">500+</div>
-                  <div className="text-blue-200 text-sm">Projects Completed</div>
+                  <div className="text-3xl  text-black font-bold">100+</div>
+                  <div className="text-black text-sm">Projects Completed</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold">98%</div>
-                  <div className="text-blue-200 text-sm">Client Satisfaction</div>
+                  <div className="text-3xl text-black font-bold">98%</div>
+                  <div className="text-black text-sm">Client Satisfaction</div>
                 </div>
               </div>
             </div>

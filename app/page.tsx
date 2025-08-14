@@ -7,6 +7,7 @@ import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
 import Scrollcounter from "@/components/scroll-counter"
 import Projectparallax from "@/components/project-parallax"
+import Map from '@/components/map'
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <ServicesSection />
       <AboutSection />
+      <Map/>
       <Scrollcounter/>
       <Projectparallax/>
       <ContactSection />

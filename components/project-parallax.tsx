@@ -51,11 +51,10 @@ export const products = [
       "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
   },
   {
-    title: "Blufeather Solutions",
-    // maintainance
-    link: "https://blufeathersolutions.com",
+    title: "Blufeather Solution",
+    link: "https://blufeathersolution.com",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+      "/Blue-feather.png",
   },
   {
     title: "Vaiikuntha",

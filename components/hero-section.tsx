@@ -15,15 +15,13 @@ export default function HeroSection() {
   ]
 
   return (
-    <section id="home" className="min-h-screen flex items-center px-4 mt-25 lg:px-8 ">
+    <section id="home" className="min-h-screen flex items-center px-4 lg:px-8 mt-10 md:mt-[-40px] md:mb-[-30px] ">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Advanced Code Snippets */}
           <div className="order-2 lg:order-1 space-y-6">
             <div className="text-center lg:text-left mb-8">
-              <div className="inline-flex items-center px-4 py-2 bg-blue-50 border border-blue-200 rounded-full text-sm font-medium mb-4">
-                <span className="text-blue-700">Enterprise-Grade Technology</span>
-              </div>
+              
             </div>
 
             <AdvancedCodeSnippet />
@@ -32,7 +30,7 @@ export default function HeroSection() {
           {/* Right Side - Enhanced Hero Content */}
           <div className="order-1 lg:order-2 text-center lg:text-left">
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               <span className="bg-gradient-to-r text-black bg-clip-text">
                 <TypewriterEffect words={typewriterWords} />
               </span>

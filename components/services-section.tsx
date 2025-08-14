@@ -119,7 +119,7 @@ export default function ServicesSection() {
                   </div>
 
                   {/* CTA Button */}
-                  <Button
+                  {/* <Button
                     variant="ghost"
                     className={`w-full justify-between text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 border border-blue-200 hover:border-blue-600 ${
                       hoveredService === index ? "bg-blue-600 text-white border-blue-600" : ""
@@ -127,7 +127,7 @@ export default function ServicesSection() {
                   >
                     Learn More
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
+                  </Button> */}
                 </CardContent>
               </Card>
             )
