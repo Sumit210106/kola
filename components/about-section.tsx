@@ -76,12 +76,7 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <div className="mt-8">
-              <Button className="bg-[#4F46E5] hover:bg-[#4338CA] text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 transform hover:scale-105">
-                Learn More About Our Journey
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </div>
+
           </div>
 
           <div className="animate-fade-in-up">
@@ -104,7 +99,7 @@ export default function AboutSection() {
         </div>
          {/* Mission & Vision */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-100">
@@ -147,7 +142,7 @@ export default function AboutSection() {
             </div>
 
             <div className="relative">
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 shadow-2xl">
+              <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex space-x-2">
                     <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -172,10 +167,10 @@ export default function AboutSection() {
     "Microsoft Gold Partner"
   ],
   "achievements": {
-    "projects_completed": 500,
+    "projects_completed": 100,
     "client_satisfaction": "99.8%",
     "uptime_guarantee": "99.9%",
-    "response_time": "< 2 hours"
+    "response_time": "< 24 hours"
   }
 }`}
                 </pre>

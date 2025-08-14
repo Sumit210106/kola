@@ -8,17 +8,21 @@ import ScrollToTop from "@/components/scroll-to-top"
 import Scrollcounter from "@/components/scroll-counter"
 import Projectparallax from "@/components/project-parallax"
 import Map from '@/components/map'
+import Showcase from '@/components/showcase'
+import Testimonial from '@/components/testimonial'
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
       <HeroSection />
+      <Projectparallax/>
       <ServicesSection />
       <Scrollcounter/>
       <AboutSection />
+      <Showcase/>
+      <Testimonial/>
       <Map/>
-      <Projectparallax/>
       <ContactSection />
       <Footer />
       <ScrollToTop />

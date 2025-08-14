@@ -7,6 +7,7 @@ import { ArrowRight, Play, Sparkles } from "lucide-react"
 
 export default function HeroSection() {
   const typewriterWords = [
+  "Kola Communications",
   "Creative Digital Solution",
   "Brand Experiences",
   "Marketing Strategies",
