@@ -10,6 +10,7 @@ import Projectparallax from "@/components/project-parallax"
 import Map from '@/components/map'
 import Showcase from '@/components/showcase'
 import Testimonial from '@/components/testimonial'
+import Corevalues from '@/components/core-values'
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <ServicesSection />
       <Scrollcounter/>
       <AboutSection />
+      <Corevalues/>
       <Showcase/>
       <Testimonial/>
       <Map/>

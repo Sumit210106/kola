@@ -45,9 +45,9 @@ const codeSnippets: CodeSnippet[] = [
     id: "api-route",
     title: "Next.js API Route",
     language: "ts",
-    code: `export async function POST(request: Request) {
+    code: `export async function POST(request) {
   try {
-    const { email, message } = await request.json()
+  const{ email,message } = await request.json()
     
     // Validate input
     if (!email || !message) {
@@ -58,7 +58,7 @@ const codeSnippets: CodeSnippet[] = [
     }
 
     // Process with AI
-    const aiResponse = await openai.chat.completions.create({
+    const aiResponse = await openai.chat({
       model: "gpt-4",
       messages: [{ role: "user", content: message }]
     })
@@ -83,7 +83,7 @@ const codeSnippets: CodeSnippet[] = [
     code: `import { prisma } from '@/lib/prisma'
 
 export class UserService {
-  static async createUser(data: CreateUserData) {
+  static async createUser(data) {
     return await prisma.user.create({
       data: {
         email: data.email,
@@ -176,7 +176,7 @@ export default function AdvancedCodeSnippet() {
             {isTyping && <span className="animate-pulse text-green-400">|</span>}
           </pre>
 
-          <div className="mt-3 p-2 bg-gray-800/50 rounded border border-gray-600">
+          <div className="mt-1 p-2 bg-gray-800/50 rounded border border-gray-600">
             <p className="text-xs text-gray-400">{codeSnippets[currentSnippet].description}</p>
           </div>
         </div>

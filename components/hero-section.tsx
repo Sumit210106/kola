@@ -16,7 +16,7 @@ export default function HeroSection() {
   ]
 
   return (
-    <section id="home" className="min-h-screen flex items-center px-4 lg:px-8 mt-30 md:mt-[-40px] md:mb-[-30px] ">
+    <section id="home" className="min-h-screen flex items-center px-4 lg:px-8 mt-30 md:mt-[-40px] md:mb-[-90px] ">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Advanced Code Snippets */}
