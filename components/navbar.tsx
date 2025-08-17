@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Sparkles,ArrowRight } from "lucide-react"
+import { Menu, X, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -22,7 +22,7 @@ export default function Navbar() {
   const navItems = [
     { name: "Home", href: "#" },
     { name: "Services", href: "#services" },
-    { name: "About", href: "#about" }, 
+    { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
   ]
@@ -44,7 +44,10 @@ export default function Navbar() {
           {/* Enhanced Logo */}
           <div className="flex items-center space-x-3 group rounded-xl">
             <div className="w-20 h-10 relative transition-transform duration-300">
-              <Image src="/kola-logo.png" alt="Kola Communication" fill className="object-cover" />
+              <a href="#">
+                <Image src="/kola-logo.png" alt="Kola Communication" fill className="object-cover" />
+              </a>
+              
             </div>
           </div>
 
@@ -75,51 +78,69 @@ export default function Navbar() {
 
           {/* Enhanced CTA Button */}
           <div className="hidden md:block">
-            <Button
-            className="w-full bg-gradient-to-r from-[#3D44C3] to-[#2C349E] hover:from-[#595ED2] hover:to-[#232B7D] text-white px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 shadow-lg flex items-center justify-center gap-2 group"
-          >
-            <span>Get in touch</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 duration-200" />
-          </Button>
+            <a href="#contact">
+              <Button className="w-full bg-gradient-to-r from-[#3D44C3] to-[#2C349E] hover:from-[#595ED2] hover:to-[#232B7D] text-white px-6 py-3 rounded-xl font-medium text-base transition-all duration-300 shadow-lg flex items-center justify-center gap-2 group">
+              <span>Get in touch</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 duration-200" />
+            </Button>
+            </a>
+            
           </div>
 
-          {/* Enhanced Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100/50 transition-colors duration-200"
+            className="md:hidden p-3 rounded-xl hover:bg-gray-100/70 active:bg-gray-200/50 transition-all duration-200 relative overflow-hidden group"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6 text-gray-700" /> : <Menu className="w-6 h-6 text-gray-700" />}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-gray-700 relative z-10 transform rotate-0 transition-transform duration-200" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-700 relative z-10 transform rotate-0 transition-transform duration-200" />
+            )}
           </button>
         </div>
 
-        {/* Enhanced Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pt-4 border-t border-gray-200/50 animate-fade-in-up">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) =>
+          <div className="md:hidden mt-6 pt-6 border-t border-gray-200/60 animate-fade-in-up bg-white p-4 rounded-xl mb-4">
+            <div className="flex flex-col space-y-2 pb-4">
+              {navItems.map((item, index) =>
                 item.href.startsWith("#") ? (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2"
+                    className="text-gray-700 hover:text-blue-600 active:text-blue-700 transition-all duration-200 font-medium py-4 px-4 rounded-xl hover:bg-gray-50/80 active:bg-gray-100/60 relative group overflow-hidden"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    style={{ animationDelay: `${index * 50}ms` }}
                   >
-                    {item.name}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                    <span className="relative z-10 text-base">{item.name}</span>
+                    <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   </a>
                 ) : (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium py-2"
+                    className="text-gray-700 hover:text-blue-600 active:text-blue-700 transition-all duration-200 font-medium py-4 px-4 rounded-xl hover:bg-gray-50/80 active:bg-gray-100/60 relative group overflow-hidden"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    style={{ animationDelay: `${index * 50}ms` }}
                   >
-                    {item.name}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                    <span className="relative z-10 text-base">{item.name}</span>
+                    <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   </Link>
                 ),
               )}
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-xl font-medium transition-all duration-300 w-full mt-4 shadow-lg">
-                Get Started
-              </Button>
+
+              <div className="pt-4 mt-2 border-t border-gray-200/40">
+              <a href="#contact">
+                <Button className="bg-gradient-to-r from-[#3D44C3] to-[#2C349E] hover:from-[#595ED2] hover:to-[#232B7D] active:from-[#2A2F8F] active:to-[#1E2570] text-white px-6 py-4 rounded-xl font-semibold text-base transition-all duration-300 w-full shadow-lg hover:shadow-xl active:shadow-md flex items-center justify-center gap-3 group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative z-10">Get in touch</span>
+                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-active:translate-x-2 transition-transform duration-200" />
+                </Button>
+              </a>
+                
+              </div>
             </div>
           </div>
         )}

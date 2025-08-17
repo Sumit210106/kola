@@ -16,7 +16,7 @@ export default function HeroSection() {
   ]
 
   return (
-    <section id="home" className="min-h-screen flex items-center px-4 lg:px-8 mt-10 md:mt-[-40px] md:mb-[-30px] ">
+    <section id="home" className="min-h-screen flex items-center px-4 lg:px-8 mt-20 md:mt-[-40px] md:mb-[-30px] ">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Advanced Code Snippets */}
@@ -44,13 +44,16 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-              <Button
+              <a href="#contact">
+                 <Button
                 size="lg"
                 className="bg-gradient-to-r from-[#3D44C3] to-[#2C349E] hover:from-[#595ED2] text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:shadow-xl border-2 border-transparent hover:border-blue-300"
               >
                 Start Your Project
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
+              </a>
+             
             </div>
 
             {/* Enhanced Stats */}

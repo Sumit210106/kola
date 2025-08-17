@@ -3,23 +3,27 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Input } from "./ui/input"
-import { Textarea } from "./ui/textarea"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import { Card, CardContent } from "@/components/ui/card"
+import { MapPin, Phone, Mail, Users, Award, CheckCircle } from "lucide-react"
 
-const ContactSection = () => {
+export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
-    company: "",
+    companyName: "",
     message: "",
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    })
+    }))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -29,183 +33,194 @@ const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Ready to Start Your Project?</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Let's discuss how Kola Communication can help transform your digital presence and drive your business
-            forward.
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden " id="contact">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-[#3D44C3]/10 to-[#2C349E]/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-[#2C349E]/10 to-[#3D44C3]/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-[#3D44C3]/5 to-[#2C349E]/5 rounded-full blur-3xl"></div>
+
+        {/* Geometric patterns */}
+        <div className="absolute top-20 left-10 w-4 h-4 bg-[#3D44C3]/20 rounded-full"></div>
+        <div className="absolute top-40 right-20 w-6 h-6 bg-[#2C349E]/15 rounded-full"></div>
+        <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-[#3D44C3]/25 rounded-full"></div>
+        <div className="absolute bottom-20 right-1/3 w-5 h-5 bg-[#2C349E]/20 rounded-full"></div>
+        <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-[#3D44C3]/30 rounded-full"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-4 h-4 bg-[#2C349E]/25 rounded-full"></div>
+
+        {/* Simple dot pattern using CSS */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: "radial-gradient(circle, #3D44C3 1px, transparent 1px)",
+            backgroundSize: "30px 30px",
+          }}
+        ></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Get in touch with our team. We're here to help you transform your digital presence.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Left Side - Contact Form */}
+          <div className="space-y-8">
+            <Card className="shadow-lg border-0  backdrop-blur-sm">
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a message</h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Label htmlFor="fullName" className="text-sm font-medium text-gray-700">
+                      Full Name *
+                    </Label>
+                    <Input
+                      id="fullName"
+                      name="fullName"
+                      type="text"
+                      required
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                      className="mt-1 block w-full border-gray-300 focus:border-[#3D44C3] focus:ring-[#3D44C3] bg-white/80"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
 
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                  Company Name
-                </label>
-                <Input
-                  id="company"
-                  name="company"
-                  type="text"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className="w-full"
-                  placeholder="Your Company"
-                />
-              </div>
+                  <div>
+                    <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                      Email *
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="mt-1 block w-full border-gray-300 focus:border-[#3D44C3] focus:ring-[#3D44C3] bg-white/80"
+                      placeholder="Enter your email address"
+                    />
+                  </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message *
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full resize-none"
-                  placeholder="Tell us about your project..."
-                />
-              </div>
+                  <div>
+                    <Label htmlFor="companyName" className="text-sm font-medium text-gray-700">
+                      Company Name
+                    </Label>
+                    <Input
+                      id="companyName"
+                      name="companyName"
+                      type="text"
+                      value={formData.companyName}
+                      onChange={handleInputChange}
+                      className="mt-1 block w-full border-gray-300 focus:border-[#3D44C3] focus:ring-[#3D44C3] bg-white/80"
+                      placeholder="Enter your company name (optional)"
+                    />
+                  </div>
 
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
-              >
-                Send Message
-              </button>
-            </form>
+                  <div>
+                    <Label htmlFor="message" className="text-sm font-medium text-gray-700">
+                      Message *
+                    </Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className="mt-1 block w-full border-gray-300 focus:border-[#3D44C3] focus:ring-[#3D44C3] resize-none bg-white/80"
+                      placeholder="Tell us about your project or inquiry..."
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-[#3D44C3] to-[#2C349E] hover:from-[#2C349E] hover:to-[#1E2875] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+                  >
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Contact Information */}
+          {/* Right Side - Contact Info & Stats */}
           <div className="space-y-8">
-            <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in touch</h3>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
+            {/* Get in Touch Section */}
+            <Card className="shadow-lg border-0  text-black">
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <MapPin className="w-6 h-6 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-medium mb-1">Address</h3>
+                      <p className="text-gray-900">
+                        India
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900">Office Address</h4>
-                    <p className="text-gray-600">
-                      123 Business District
-                      <br />
-                      Tech City, TC 12345
-                    </p>
-                  </div>
-                </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                      />
-                    </svg>
+                  <div className="flex items-start space-x-4">
+                    <Phone className="w-6 h-6 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-medium mb-1">Phone</h3>
+                     <p className="text-gray-900">+91-8108969630</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900">Phone</h4>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
-                  </div>
-                </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900">Email</h4>
-                    <p className="text-gray-600">business@kolacommunications.com</p>
+                  <div className="flex items-start space-x-4">
+                    <Mail className="w-6 h-6 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-medium mb-1">Email</h3>
+                     <p className="text-gray-900">business@kolacommunications.com</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
-            <div className="bg-gray-300 rounded-2xl shadow-xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4 text-black">Ready to get started?</h3>
-              <p className="text-black mb-6">
-                Join over 500+ satisfied clients who have transformed their digital presence with Kola Communication.
-              </p>
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div>
-                  <div className="text-3xl  text-black font-bold">100+</div>
-                  <div className="text-black text-sm">Projects Completed</div>
+            {/* Ready to Get Started Section */}
+            <Card className="shadow-lg border-0 bg-gray-100/80 backdrop-blur-sm">
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Ready to get started?</h2>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Join over 100+ satisfied clients who have transformed their digital presence with Kola Communication.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#3D44C3] to-[#2C349E] rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-gray-900">100+</div>
+                      <div className="text-sm text-gray-600">Projects Completed</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#3D44C3] to-[#2C349E] rounded-full flex items-center justify-center">
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-gray-900">98%</div>
+                      <div className="text-sm text-gray-600">Client Satisfaction</div>
+                    </div>
+                  </div>
+
+                  
+
+                  
                 </div>
-                <div>
-                  <div className="text-3xl text-black font-bold">98%</div>
-                  <div className="text-black text-sm">Client Satisfaction</div>
-                </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
-
-export default ContactSection
