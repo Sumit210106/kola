@@ -45,7 +45,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-3 group rounded-xl">
             <div className="w-20 h-10 relative transition-transform duration-300">
               <a href="#">
-                <Image src="/kola-logo.png" alt="Kola Communication" fill className="object-cover" />
+                <Image src="/logo-2.png" alt="Kola Communication" fill className="object-cover" />
               </a>
               
             </div>

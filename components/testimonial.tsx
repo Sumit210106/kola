@@ -1,83 +1,64 @@
-"use client"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
-import { Star, Quote, User } from "lucide-react"
+import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Quote, User, X } from "lucide-react";
 
 const testimonialsData = [
   {
-    id: "sarah-johnson",
-    name: "Sarah Johnson",
-    role: "Marketing Director",
-    company: "TechStart Inc.",
-    rating: 5,
+    id: "karan-mehta",
+    name: "Karan Mehta",
+    role: "",
+    company: "",
     testimonial:
-      "KOLA Communications transformed our digital presence completely. Their web design expertise and attention to detail exceeded our expectations.",
-    project: "Web Design",
+      "Kola Communications’ ability to understand our unique needs and translate them into creative campaigns has been invaluable. Their work has not only strengthened our brand but also driven meaningful engagement.",
+    project: "Creative Campaigns",
   },
   {
-    id: "michael-chen",
-    name: "Michael Chen",
-    role: "CEO",
-    company: "GrowthLab",
-    rating: 5,
+    id: "nitin",
+    name: "Nitin",
+    role: "",
+    company: "",
     testimonial:
-      "The SEO and content strategy they developed increased our organic traffic by 300%. Exceptional work and results-driven approach.",
-    project: "SEO & Content",
+      "Their team doesn’t just work on projects—they truly invest in your success. Kola Communications provided us with innovative designs and a clear strategy that elevated our brand presence.",
+    project: "Design & Strategy",
   },
   {
-    id: "emily-rodriguez",
-    name: "Emily Rodriguez",
-    role: "Brand Manager",
-    company: "Lifestyle Co.",
-    rating: 5,
+    id: "dhairya-shah",
+    name: "Dhairya Shah",
+    role: "",
+    company: "",
     testimonial:
-      "Their social media marketing campaigns generated incredible engagement. Our follower count doubled in just three months.",
-    project: "Social Media",
+      "Working with Kola Communications has been a game-changer for our business. Their innovative approach to content and design helped us connect more deeply with our audience.",
+    project: "Content & Design",
   },
   {
-    id: "david-thompson",
-    name: "David Thompson",
-    role: "Founder",
-    company: "InnovateTech",
-    rating: 5,
+    id: "amit-verma",
+    name: "Amit Verma",
+    role: "",
+    company: "",
     testimonial:
-      "Professional, creative, and reliable. KOLA Communications delivered a stunning website that perfectly represents our brand.",
-    project: "Web Design",
+      "From concept to execution, Kola Communications made the entire process seamless and enjoyable. Their expertise in branding and digital marketing took our business to the next level.",
+    project: "Branding & Marketing",
   },
-  {
-    id: "lisa-wang",
-    name: "Lisa Wang",
-    role: "Operations Manager",
-    company: "Digital Solutions",
-    rating: 5,
-    testimonial:
-      "Outstanding content creation and SEO optimization. Our search rankings improved dramatically within weeks of implementation.",
-    project: "Content & SEO",
-  },
-  {
-    id: "james-miller",
-    name: "James Miller",
-    role: "Creative Director",
-    company: "Design Studio",
-    rating: 5,
-    testimonial:
-      "The team's creativity and strategic thinking helped us launch a successful social media campaign that exceeded all our goals.",
-    project: "Social Media",
-  },
-]
+];
 
 const projectColors = {
-  "Web Design": "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100",
-  "SEO & Content": "bg-purple-50 text-purple-700 border-purple-200 hover:bg-purple-100",
-  "Social Media": "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100",
-  "Content & SEO": "bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100"
-}
+  "Creative Campaigns":
+    "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100",
+  "Design & Strategy":
+    "bg-purple-50 text-purple-700 border-purple-200 hover:bg-purple-100",
+  "Content & Design":
+    "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100",
+  "Branding & Marketing":
+    "bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100",
+};
 
 interface TestimonialsProps {
-  title?: string
-  subtitle?: string
-  showHeader?: boolean
-  maxTestimonials?: number
+  title?: string;
+  subtitle?: string;
+  showHeader?: boolean;
+  maxTestimonials?: number;
 }
 
 export default function Testimonials({
@@ -86,38 +67,36 @@ export default function Testimonials({
   showHeader = true,
   maxTestimonials,
 }: TestimonialsProps) {
-  const displayTestimonials = maxTestimonials ? testimonialsData.slice(0, maxTestimonials) : testimonialsData
-  const duplicatedTestimonials = [...displayTestimonials, ...displayTestimonials, ...displayTestimonials]
+  const [selectedTestimonial, setSelectedTestimonial] = useState<any>(null);
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <Star 
-        key={index} 
-        className={`w-4 h-4 transition-colors duration-300 ${
-          index < rating ? "text-amber-400 fill-current" : "text-neutral-200"
-        }`} 
-      />
-    ))
-  }
+  const displayTestimonials = maxTestimonials
+    ? testimonialsData.slice(0, maxTestimonials)
+    : testimonialsData;
+
+  const duplicatedTestimonials = [
+    ...displayTestimonials,
+    ...displayTestimonials,
+    ...displayTestimonials,
+  ];
 
   const getAvatarColor = (index: number) => {
     const colors = [
       "from-rose-400 to-rose-500",
-      "from-blue-400 to-blue-500", 
+      "from-blue-400 to-blue-500",
       "from-emerald-400 to-emerald-500",
       "from-purple-400 to-purple-500",
       "from-amber-400 to-amber-500",
-      "from-teal-400 to-teal-500"
-    ]
-    return colors[index % colors.length]
-  }
+      "from-teal-400 to-teal-500",
+    ];
+    return colors[index % colors.length];
+  };
 
   return (
     <section className="md:pt-10 mt-[-20px] pt-5 bg-gradient-to-br from-neutral-50 via-white to-stone-50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {showHeader && (
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black bg-clip-text  mb-3 sm:mb-4 tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black bg-clip-text mb-3 sm:mb-4 tracking-tight leading-tight">
               {title}
             </h2>
             <p className="text-neutral-600 max-w-2xl lg:max-w-3xl mx-auto text-base sm:text-lg lg:text-xl leading-relaxed">
@@ -126,44 +105,51 @@ export default function Testimonials({
           </div>
         )}
 
+        {/* MARQUEE */}
         <div className="relative">
-          {/* Enhanced gradient masks for better fading */}
           <div className="absolute left-0 top-0 w-8 sm:w-16 md:w-24 lg:w-32 h-full bg-gradient-to-r from-neutral-50 via-white/95 to-transparent z-30 pointer-events-none"></div>
           <div className="absolute right-0 top-0 w-8 sm:w-16 md:w-24 lg:w-32 h-full bg-gradient-to-l from-stone-50 via-white/95 to-transparent z-30 pointer-events-none"></div>
 
           <div className="marquee-container">
-            <div className="flex animate-marquee gap-4 sm:gap-6 lg:gap-8" id="marquee-track">
+            <div
+              className="flex animate-marquee gap-4 sm:gap-6 lg:gap-8"
+              id="marquee-track"
+            >
               {duplicatedTestimonials.map((testimonial, index) => (
-                <div 
-                  key={`${testimonial.id}-${index}`} 
+                <div
+                  key={`${testimonial.id}-${index}`}
                   className="flex-shrink-0 w-72 sm:w-80 md:w-96 lg:w-[420px]"
                   onMouseEnter={() => {
-                    const track = document.getElementById('marquee-track')
-                    if (track) track.style.animationPlayState = 'paused'
+                    const track = document.getElementById("marquee-track");
+                    if (track) track.style.animationPlayState = "paused";
                   }}
                   onMouseLeave={() => {
-                    const track = document.getElementById('marquee-track')
-                    if (track) track.style.animationPlayState = 'running'
+                    const track = document.getElementById("marquee-track");
+                    if (track) track.style.animationPlayState = "running";
                   }}
                 >
-                  <div className="bg-white/70 backdrop-blur-sm border border-neutral-200/50 rounded-2xl p-5 sm:p-6 lg:p-8 h-full shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer relative overflow-hidden group">
-                    {/* Subtle hover overlay */}
+                  <div
+                    className="bg-white/70 backdrop-blur-sm border border-neutral-200/50 rounded-2xl p-5 sm:p-6 lg:p-8 h-full shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02] cursor-pointer relative overflow-hidden group"
+                    onClick={() => setSelectedTestimonial(testimonial)}
+                  >
                     <div className="absolute inset-0 bg-gradient-to-br from-neutral-50/40 via-transparent to-stone-50/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
+
                     <div className="relative z-10">
-                      <div className="flex items-center justify-between mb-4 sm:mb-6">
-                        <div className="flex items-center gap-0.5">
-                          {renderStars(testimonial.rating)}
-                        </div>
+                      <div className="flex items-center justify-end mb-4 sm:mb-6">
                         <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-400 group-hover:text-neutral-500 transition-colors duration-300" />
                       </div>
 
-                      <blockquote className="text-neutral-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-5 sm:mb-6 font-medium line-clamp-4">
+                      {/* Short testimonial preview */}
+                      <blockquote className="text-neutral-700 text-sm sm:text-base leading-relaxed mb-5 sm:mb-6 line-clamp-4">
                         "{testimonial.testimonial}"
                       </blockquote>
 
                       <div className="flex items-center gap-3 sm:gap-4">
-                        <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br ${getAvatarColor(index)} flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow duration-300 flex-shrink-0`}>
+                        <div
+                          className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br ${getAvatarColor(
+                            index
+                          )} flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow duration-300 flex-shrink-0`}
+                        >
                           <User className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -177,7 +163,12 @@ export default function Testimonials({
                             {testimonial.company}
                           </p>
                         </div>
-                        <Badge className={`${projectColors[testimonial.project] || projectColors["Web Design"]} text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 sm:py-1.5 transition-all duration-300 flex-shrink-0 shadow-sm border`}>
+                        <Badge
+                          className={`${
+                            projectColors[testimonial.project] ||
+                            projectColors["Creative Campaigns"]
+                          } text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 sm:py-1.5 transition-all duration-300 flex-shrink-0 shadow-sm border`}
+                        >
                           {testimonial.project}
                         </Badge>
                       </div>
@@ -189,6 +180,52 @@ export default function Testimonials({
           </div>
         </div>
       </div>
+
+      {/* MODAL POPUP */}
+      {selectedTestimonial && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 relative shadow-xl">
+            <button
+              className="absolute top-4 right-4 text-neutral-500 hover:text-neutral-700"
+              onClick={() => setSelectedTestimonial(null)}
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-4 mb-4">
+              <div
+                className={`w-12 h-12 rounded-full bg-gradient-to-br ${getAvatarColor(
+                  1
+                )} flex items-center justify-center shadow-sm`}
+              >
+                <User className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-neutral-900 text-lg">
+                  {selectedTestimonial.name}
+                </h4>
+                <p className="text-sm text-neutral-600">
+                  {selectedTestimonial.role}
+                </p>
+                <p className="text-xs text-neutral-500">
+                  {selectedTestimonial.company}
+                </p>
+              </div>
+              <Badge
+                className={`ml-auto ${
+                  projectColors[selectedTestimonial.project]
+                } text-xs font-medium px-3 py-1 border`}
+              >
+                {selectedTestimonial.project}
+              </Badge>
+            </div>
+
+            <p className="text-neutral-700 text-base leading-relaxed">
+              “{selectedTestimonial.testimonial}”
+            </p>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .marquee-container {
@@ -207,7 +244,6 @@ export default function Testimonials({
             transparent 100%
           );
         }
-        
         @keyframes marquee {
           0% {
             transform: translateX(0);
@@ -216,49 +252,17 @@ export default function Testimonials({
             transform: translateX(-33.333%);
           }
         }
-        
         .animate-marquee {
-          animation: marquee 10s linear infinite;
+          animation: marquee 12s linear infinite;
+          transition: animation-play-state 0.3s ease;
         }
-
         .line-clamp-4 {
           display: -webkit-box;
           -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
-
-        /* Responsive breakpoints */
-        @media (max-width: 640px) {
-          .animate-marquee {
-            animation-duration: 10s;
-          }
-        }
-
-        @media (min-width: 641px) and (max-width: 768px) {
-          .animate-marquee {
-            animation-duration: 10s;
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .animate-marquee {
-            animation-duration: 10s;
-          }
-        }
-
-        /* Enhanced backdrop blur support */
-        @supports (backdrop-filter: blur(8px)) {
-          .bg-white\\/70 {
-            backdrop-filter: blur(8px);
-          }
-        }
-
-        /* Smooth pause transition */
-        .animate-marquee {
-          transition: animation-play-state 0.3s ease;
-        }
       `}</style>
     </section>
-  )
+  );
 }

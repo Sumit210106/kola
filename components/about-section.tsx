@@ -72,21 +72,26 @@ export default function AboutSection() {
             </h3>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                Founded with a vision to bridge the gap between innovative
-                technology and business success, Kola Communication has been at
-                the forefront of digital transformation for over 3 years.
+              At Kola Communications, we are passionate about crafting digital
+              experiences that inspire, engage, and deliver results. As a
+              forward-thinking digital solutions company, we specialize in website
+              development, AI Tools, brand strategy, and digital marketing,
+              helping businesses transform their ideas into powerful online
+              identities.
               </p>
               <p>
-                We started as a small team of passionate developers and
-                marketers who believed that every business deserves access to
-                world-class digital solutions. Today, we've grown into a
-                comprehensive digital agency that serves clients across various
-                industries.
+              Our approach blends creativity and innovation to design solutions
+              that not only look exceptional but also drive measurable growth.
+              With a global perspective, we proudly partner with clients across
+              India, the US, Europe, and the Middle East, offering tailored
+              strategies that honor cultural nuances while maintaining universal
+              appeal.
               </p>
               <p>
-                Our journey has been marked by continuous learning, adaptation,
-                and an unwavering commitment to delivering exceptional results
-                for our clients.
+               Whether you’re looking to launch a new brand, revamp your
+              digital presence, or scale your business online, we combine
+              strategic thinking, cutting-edge technology, and creative
+              storytelling to amplify your brand in the digital world.
               </p>
             </div>
           </div>
@@ -193,9 +198,8 @@ export default function AboutSection() {
                   <pre className="text-green-400 font-mono text-xs sm:text-sm leading-relaxed break-words whitespace-pre-wrap">
                     {`{
   "company": "Kola Communication",
-  "founded": "2022",
+  "founded": "2024",
   "headquarters": "Global",
-  "team_size": "50+ experts",
   "technologies": [
     "AI/ML", "Blockchain", "Cloud Native",
     "Microservices", "DevOps", "IoT"
@@ -219,7 +223,7 @@ export default function AboutSection() {
           </div>
         </section>
         <br />
-{/*  
+        {/*  
         
         <div className="mb-20">
           <div className="text-center mb-12">
@@ -264,8 +268,6 @@ export default function AboutSection() {
           </div>
         </div>
         */}
-
-        
       </div>
     </section>
   );

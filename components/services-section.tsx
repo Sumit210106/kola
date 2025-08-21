@@ -19,16 +19,17 @@ import {
   Cpu,
   DollarSign,
   BarChart2,
-  Video,        // <-- Use this instead of VideoCamera
   CheckCircle,
-  ArrowRight,
-} from "lucide-react"
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
+
 const services = [
   {
     icon: Globe,
     title: "Website Development",
     description:
-      "Designing and building modern, responsive websites that showcase your brand and engage your audience.",
+      "Designing and building modern, responsive websites that showcase your brand and engage your audience. Our expertise includes custom-coded solutions as well as platforms like WordPress, Shopify, and WooCommerce to meet diverse business needs.",
     features: [
       "Responsive Design",
       "SEO Optimized",
@@ -37,6 +38,62 @@ const services = [
     ],
     color: "bg-blue-50 text-blue-600",
     borderColor: "border-blue-200",
+  },
+  {
+    icon: Cpu,
+    title: "AI Apps & Tools",
+    description: `We turn AI prototypes into usable tools: secure auth, API/data integrations, logging and deployment. From small internal helpers to customer-facing apps, built with guardrails and dashboards to measure impact.`,
+    features: [
+      "AI Model Integration",
+      "Secure Authentication",
+      "Real-time Data Processing",
+      "Custom Dashboards & Reporting",
+      "API Integrations",
+    ],
+    color: "bg-teal-50 text-teal-600",
+    borderColor: "border-teal-200",
+  },
+  {
+    icon: Search,
+    title: "Search Engine Optimization",
+    description:
+      "Improving your website's visibility and ranking in search engines to attract more organic traffic and potential clients.",
+    features: [
+      "Keyword Research",
+      "On-Page SEO",
+      "Link Building",
+      "Technical SEO",
+    ],
+    color: "bg-orange-50 text-orange-600",
+    borderColor: "border-orange-200",
+  },
+  {
+    icon: Share2,
+    title: "Social Media Marketing",
+    description:
+      "Building your brand's presence and engaging your followers across all major social platforms with creative strategies.",
+    features: [
+      "Content Strategy",
+      "Community Management",
+      "Influencer Outreach",
+      "Social Analytics",
+    ],
+    color: "bg-indigo-50 text-indigo-600",
+    borderColor: "border-indigo-200",
+  },
+  {
+    icon: DollarSign,
+    title: "Performance Marketing",
+    description: `Full-funnel campaigns across Google, Meta, and LinkedIn. Offers, creatives, landing pages, tracking, and weekly optimisations focused on qualified leads and efficient spend, not vanity metrics.`,
+    features: [
+      "Full-Funnel Strategy",
+      "Custom Landing Pages",
+      "Conversion Optimized Ads",
+      "Granular Tracking & Attribution",
+      "Budget Optimization",
+    ],
+    color: "bg-yellow-50 text-yellow-600",
+    borderColor: "border-yellow-200",
   },
   {
     icon: Smartphone,
@@ -62,20 +119,6 @@ const services = [
     borderColor: "border-green-200",
   },
   {
-    icon: Search,
-    title: "Search Engine Optimization",
-    description:
-      "Improving your website's visibility and ranking in search engines to attract more organic traffic and potential clients.",
-    features: [
-      "Keyword Research",
-      "On-Page SEO",
-      "Link Building",
-      "Technical SEO",
-    ],
-    color: "bg-orange-50 text-orange-600",
-    borderColor: "border-orange-200",
-  },
-  {
     icon: PenTool,
     title: "Content Creation",
     description:
@@ -90,51 +133,9 @@ const services = [
     borderColor: "border-pink-200",
   },
   {
-    icon: Share2,
-    title: "Social Media Marketing",
-    description:
-      "Building your brand's presence and engaging your followers across all major social platforms with creative strategies.",
-    features: [
-      "Content Strategy",
-      "Community Management",
-      "Influencer Outreach",
-      "Social Analytics",
-    ],
-    color: "bg-indigo-50 text-indigo-600",
-    borderColor: "border-indigo-200",
-  },
-  {
-    icon: Cpu,
-    title: "AI Apps & Tools",
-    description: `We turn AI prototypes into usable tools: secure auth, API/data integrations, logging and deployment. From small internal helpers to customer-facing apps, built with guardrails and dashboards to measure impact.`,
-    features: [
-      "AI Model Integration",
-      "Secure Authentication",
-      "Real-time Data Processing",
-      "Custom Dashboards & Reporting",
-      "API Integrations",
-    ],
-    color: "bg-teal-50 text-teal-600",
-    borderColor: "border-teal-200",
-  },
-  {
-    icon: DollarSign,
-    title: "Performance Marketing",
-    description: `Full‑funnel campaigns across Google, Meta, and LinkedIn. Offers, creatives, landing pages, tracking, and weekly optimisations focused on qualified leads and efficient spend, not vanity metrics.`,
-    features: [
-      "Full-Funnel Strategy",
-      "Custom Landing Pages",
-      "Conversion Optimized Ads",
-      "Granular Tracking & Attribution",
-      "Budget Optimization",
-    ],
-    color: "bg-yellow-50 text-yellow-600",
-    borderColor: "border-yellow-200",
-  },
-  {
     icon: BarChart2,
     title: "CRO & Analytics",
-    description: `Track what matters and lift conversion. GA4, Tag Manager, dashboards, event mapping, funnel analysis, A/B tests, heatmaps, and landing‑page tweaks so more visitors become leads and customers.`,
+    description: `Track what matters and lift conversion. GA4, Tag Manager, dashboards, event mapping, funnel analysis, A/B tests, heatmaps, and landing-page tweaks so more visitors become leads and customers.`,
     features: [
       "GA4 & Tag Manager Setup",
       "Conversion Funnel Analysis",
@@ -145,29 +146,17 @@ const services = [
     color: "bg-cyan-50 text-cyan-600",
     borderColor: "border-cyan-200",
   },
-  {
-    icon: Video, // <-- Use Video here
-    title: "Video Production",
-    description: `Concept to final cut: brand films, product explainers, and short‑form content. Scripts, shoots, edits, and motion graphics—made for fast loading on web and social, and aligned to campaign goals.`,
-    features: [
-      "Creative Concept Development",
-      "Scriptwriting & Storyboarding",
-      "Professional Filming & Editing",
-      "Motion Graphics & Animation",
-      "Optimized Formats for Web & Social",
-    ],
-    color: "bg-red-50 text-red-600",
-    borderColor: "border-red-200",
-  },
-]
+];
 
 export default function ServicesSection() {
-  const [hoveredService, setHoveredService] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState(false);
+
+  const displayServices = expanded ? services : services.slice(0, 6);
 
   return (
     <section
       id="services"
-      className=" md:mt-20 pb-10 px-4 sm:px-6 mt-[50px] pt-10 lg:px-8 bg-gray-50"
+      className="md:mt-20 pb-10 px-4 sm:px-6 mt-[50px] pt-10 lg:px-8 bg-gray-50"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -184,16 +173,14 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid with animation */}
         <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => {
+          {displayServices.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <Card
                 key={index}
-                className={`group cursor-pointer transition-all duration-300 border-2 bg-white hover:shadow-xl hover:${service.borderColor} ${service.borderColor}`}
-                onMouseEnter={() => setHoveredService(index)}
-                onMouseLeave={() => setHoveredService(null)}
+                className={`group cursor-pointer transition-all duration-500 ease-in-out border-2 bg-white hover:shadow-xl hover:${service.borderColor} ${service.borderColor} animate-fadeIn`}
               >
                 <CardHeader className="pb-4">
                   <div
@@ -222,57 +209,35 @@ export default function ServicesSection() {
                       </div>
                     ))}
                   </div>
-
-                  {/* CTA Button */}
-                  {/* <Button
-                    variant="ghost"
-                    className={`w-full justify-between text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 border border-blue-200 hover:border-blue-600 ${
-                      hoveredService === index ? "bg-blue-600 text-white border-blue-600" : ""
-                    }`}
-                  >
-                    Learn More
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button> */}
                 </CardContent>
               </Card>
             );
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-12 sm:mt-16">
-          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-200">
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
-              Ready to Transform Your Business?
-            </h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto text-sm sm:text-base">
-              Let's discuss how our comprehensive digital solutions can help you
-              achieve your business goals and stand out in the competitive
-              market.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contact" className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className="bg-[#4F46E5] hover:bg-[#4338CA] text-white px-8 py-4 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl w-full"
-                >
-                  Get Free Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </a>
-              <a href="#projects" className="w-full sm:w-auto">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-[#4F46E5] text-[#4F46E5] hover:bg-[#4F46E5] hover:text-white px-8 py-4 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 bg-transparent w-full"
-                >
-                  View Portfolio
-                </Button>
-              </a>
-            </div>
-          </div>
+        {/* Toggle Button */}
+        <div className="text-center mt-8">
+          <Button
+            variant="outline"
+            className="inline-flex items-center space-x-2"
+            onClick={() => setExpanded(!expanded)}
+          >
+            <span>{expanded ? "View Less Services" : "View More Services"}</span>
+            {expanded ? (
+              <ChevronUp className="w-4 h-4 transition-transform duration-300" />
+            ) : (
+              <ChevronDown className="w-4 h-4 transition-transform duration-300" />
+            )}
+          </Button>
         </div>
       </div>
     </section>
   );
 }
+
+// Add custom animation in globals.css
+// @keyframes fadeIn {
+//   from { opacity: 0; transform: translateY(10px) scale(0.95); }
+//   to { opacity: 1; transform: translateY(0) scale(1); }
+// }
+// .animate-fadeIn { animation: fadeIn 0.4s ease-in-out; }

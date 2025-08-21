@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image"
+import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
@@ -63,7 +64,7 @@ A custom-coded website was built with immersive digital design to resonate with 
   },
   {
     id: "nbtl",
-    title: "Nangalbibra-Bongaigaon Transmission Line",
+    title: "NBTL",
     category: "Website Development",
     tags: ["WordPress"],
     date: "2024",
@@ -223,6 +224,18 @@ interface ProjectsShowcaseProps {
   showHeader?: boolean
   maxProjects?: number
 }
+function formatDescription(desc: string) {
+  return desc
+    .replace(
+      "Client Requirement:",
+      `<span class='text-gray-900 font-semibold text-base pt-1 pb-1 inline-block'>Client Requirement:</span>`
+    )
+    .replace(
+      "How did we approach?",
+      `<span class='text-gray-900 font-semibold text-base pb-1 inline-block'>How did we approach?</span>`
+    )
+}
+
 
 export default function Showcase({
   title = "Our Projects",
@@ -244,60 +257,89 @@ export default function Showcase({
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayProjects.map((project) => (
-            <Card
-              key={project.id}
-              className="group relative overflow-hidden bg-white border border-gray-200 hover:border-indigo-300 hover:shadow-xl transition-all duration-300 rounded-xl"
-            >
-              <CardContent className="p-0">
-                <div className="relative overflow-hidden h-56 rounded-t-xl border border-gray-300">
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} preview`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-indigo-600 text-white border-0 text-xs font-medium px-3 py-1 shadow-sm">
-                      {project.category}
-                    </Badge>
-                  </div>
-                </div>
-                <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        variant="secondary"
-                        className="bg-gray-100 text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 text-xs font-medium px-3 py-1 transition-colors duration-200"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="pt-3 border-t border-gray-100">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 text-sm font-medium transition-colors duration-300 group/link"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform duration-200" />
-                      Live Project Link
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
     </section>
+  )
+}
+
+function ProjectCard({ project }: { project: (typeof projectsData)[0] }) {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <Card className="group relative overflow-hidden bg-white border border-gray-200 hover:border-indigo-300 hover:shadow-xl transition-all duration-300 rounded-xl">
+      <CardContent className="p-0">
+        {/* Image */}
+        <div className="relative overflow-hidden h-56 rounded-t-xl border border-gray-300">
+          <Image
+            src={project.image}
+            alt={`${project.title} preview`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority
+          />
+          <div className="absolute top-4 right-4">
+            <Badge className="bg-indigo-600 text-white border-0 text-xs font-medium px-3 py-1 shadow-sm">
+              {project.category}
+            </Badge>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 space-y-4">
+          <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">
+            {project.title}
+          </h3>
+
+          {/* Description with mobile truncate */}
+          <div className="text-gray-600 text-sm leading-relaxed ">
+            <div
+              className={`whitespace-pre-line transition-all duration-300 ${
+                expanded ? "line-clamp-none" : "line-clamp-3 md:line-clamp-none"
+              }`}
+              dangerouslySetInnerHTML={{ __html: formatDescription(project.description) }}
+            ></div>
+
+            {/* Show Read More on mobile only */}
+            <button
+              className="mt-2 text-indigo-600 hover:text-indigo-700 font-medium text-xs md:hidden"
+              onClick={() => setExpanded(!expanded)}
+            >
+              {expanded ? "Read Less" : "Read More"}
+            </button>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <Badge
+                key={tag}
+                variant="secondary"
+                className="bg-gray-100 text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 text-xs font-medium px-3 py-1 transition-colors duration-200"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+
+          {/* Link */}
+          <div className="pt-3 border-t border-gray-100">
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 text-sm font-medium transition-colors duration-300 group/link"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform duration-200" />
+              Live Project Link
+            </a>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   )
 }

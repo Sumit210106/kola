@@ -17,14 +17,19 @@ export default function HeroScrollDemo() {
           </>
         }
       >
-        <img
-          src={`/linear.webp`}
-          alt="hero"
-          height={720}
-          width={1400}
-          className="mx-auto rounded-2xl object-cover h-full object-left-top"
-          draggable={false}
-        />
+        <div className="flex justify-center">
+          <iframe
+            src="https://www.instagram.com/reel/DJ1Co45PvPK/embed"
+            width="400"
+            height="720"
+            scrolling="no"
+            allowtransparency="true"
+            allow="autoplay"
+            allowFullScreen
+            muted
+            loop
+          ></iframe>
+        </div>
       </ContainerScroll>
     </div>
   );
