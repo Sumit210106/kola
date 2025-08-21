@@ -267,10 +267,6 @@ const ValuesSection: React.FC = () => {
                   ></div>
                 </div>
 
-                {/* Index Number */}
-                <div className="absolute -top-3 -left-3 w-7 h-7 bg-slate-900 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-lg group-hover:scale-110 transition-all duration-300">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
               </div>
             );
           })}
