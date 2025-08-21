@@ -72,26 +72,23 @@ export default function AboutSection() {
             </h3>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-              At Kola Communications, we are passionate about crafting digital
-              experiences that inspire, engage, and deliver results. As a
-              forward-thinking digital solutions company, we specialize in website
-              development, AI Tools, brand strategy, and digital marketing,
-              helping businesses transform their ideas into powerful online
-              identities.
+                At Kola Communications, we create digital experiences that
+                inspire, engage, and deliver results. As a forward-thinking
+                digital solutions company, we specialize in website development,
+                AI-powered tools and applications, mobile app development, SEO,
+                and SMM — helping businesses turn ideas into powerful online
+                identities.
               </p>
               <p>
-              Our approach blends creativity and innovation to design solutions
-              that not only look exceptional but also drive measurable growth.
-              With a global perspective, we proudly partner with clients across
-              India, the US, Europe, and the Middle East, offering tailored
-              strategies that honor cultural nuances while maintaining universal
-              appeal.
+                Blending creativity with innovation, we design solutions that
+                not only look exceptional but also drive measurable growth. With
+                a global outlook, we partner with clients across India, the US,
+                Europe, and the Middle East, delivering strategies that respect
+                cultural nuances while maintaining universal appeal.
               </p>
               <p>
-               Whether you’re looking to launch a new brand, revamp your
-              digital presence, or scale your business online, we combine
-              strategic thinking, cutting-edge technology, and creative
-              storytelling to amplify your brand in the digital world.
+                At Kola Communications, your success is our success — because
+                when you grow, we grow.
               </p>
             </div>
           </div>
