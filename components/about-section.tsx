@@ -40,9 +40,9 @@ const values = [
 ];
 
 const stats = [
-  { number: "150+", label: "Projects Completed" },
+  { number: "100+", label: "Projects Completed" },
   { number: "98%", label: "Client Satisfaction" },
-  { number: "5+", label: "Years Experience" },
+  { number: "2+", label: "Years Experience" },
   { number: "24/7", label: "Support Available" },
 ];
 
@@ -194,23 +194,21 @@ export default function AboutSection() {
                   </div>
                   <pre className="text-green-400 font-mono text-xs sm:text-sm leading-relaxed break-words whitespace-pre-wrap">
                     {`{
-  "company": "Kola Communication",
-  "founded": "2024",
-  "headquarters": "Global",
-  "technologies": [
-    "AI/ML", "Blockchain", "Cloud Native",
-    "Microservices", "DevOps", "IoT"
+  "company": "Kola Communications",
+  "presence": ["India", "US", "Europe", "Middle East"],
+  "innovation_focus": ["AI", "Cloud", "Next-Gen Web”],
+  "expertise": [
+    "Web Experiences",
+    "AI-Driven Solutions",
+    "Mobile Apps",
+    "SEO & Growth",
+    "Social Storytelling"
   ],
-  "certifications": [
-    "AWS Advanced Partner",
-    "Google Cloud Premier",
-    "Microsoft Gold Partner"
-  ],
-  "achievements": {
-    "projects_completed": 100,
-    "client_satisfaction": "99.8%",
+  "highlights": {
+    "projects_completed": "100+",
+    "client_satisfaction": "99%",
     "uptime_guarantee": "99.9%",
-    "response_time": "< 24 hours"
+    "creative_energy": "limitless"
   }
 }`}
                   </pre>
@@ -219,52 +217,6 @@ export default function AboutSection() {
             </div>
           </div>
         </section>
-        <br />
-        {/*  
-        
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              Our Core Values
-            </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              These principles guide everything we do and shape how we work with
-              our clients.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => {
-              const IconComponent = value.icon;
-              return (
-                <Card
-                  key={index}
-                  className="group hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-0 bg-white"
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                    opacity: 0,
-                    animation: `fadeInUp 0.6s ease-out ${
-                      index * 100
-                    }ms forwards`,
-                  }}
-                >
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-[#4F46E5]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#4F46E5]/20 transition-colors duration-300">
-                      <IconComponent className="w-8 h-8 text-[#4F46E5]" />
-                    </div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      {value.title}
-                    </h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {value.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-        */}
       </div>
     </section>
   );
