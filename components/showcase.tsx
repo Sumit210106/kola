@@ -289,7 +289,7 @@ export default function Showcase({
                       onClick={(e) => e.stopPropagation()}
                     >
                       <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform duration-200" />
-                      Live Demo
+                      Live Project Link
                     </a>
                   </div>
                 </div>
