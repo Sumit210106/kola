@@ -92,7 +92,7 @@ export default function Testimonials({
   };
 
   return (
-    <section className="md:pt-10 mt-[-20px] pt-5 bg-gradient-to-br from-neutral-50 via-white to-stone-50 overflow-hidden">
+    <section id='testimonial' className="md:pt-10 mt-[-20px] pt-5 bg-gradient-to-br from-neutral-50 via-white to-stone-50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {showHeader && (
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
