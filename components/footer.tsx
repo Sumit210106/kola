@@ -29,18 +29,22 @@ const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+const footerLinks: { [key: string]: { name: string; href: string }[] } = {
+  Services: [
+    { name: "Website Development", href: "#services" },
+    { name: "AI Apps & Tools", href: "#services" },
+    { name: "Search Engine Optimization", href: "#services" },
+    { name: "Performance Marketing", href: "#services" },
+    { name: "Content Creation", href: "#services" },
+    { name: "Social Media Marketing", href: "#services" },
+    { name: "App Development", href: "#services" },
+  ],
+  Company: [
+    { name: "About Us", href: "#about" },
+    { name: "Contact Us", href: "#contact" },
+  ],
+};
 
-  const footerLinks: FooterLinksType = {
-    Services: [
-      "Website Development",
-      "Digital Marketing",
-      "Search Engine Optimization",
-      "Content Creation",
-      "Social Media Marketing",
-      "App Development",
-    ],
-    Company: ["About Us", "Our Team", "Careers", "Press & Media", "Contact Us"],
-  };
 
   const socialLinks: { icon: React.ElementType; href: string; label: string }[] = [
     { icon: Facebook, href: "#", label: "Facebook" },
@@ -93,7 +97,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer">
                 <MapPin className="w-4 h-4" />
-                <span className="text-sm">India</span>
+                <span className="text-sm">Mumbai, Maharashtra, India</span>
               </div>
             </div>
           </div>
@@ -136,24 +140,24 @@ const Footer: React.FC = () => {
           {/* Links Section */}
           <div className="grid grid-cols-2 gap-8">
             {Object.entries(footerLinks).map(([category, links]) => (
-              <div key={category} className="space-y-4">
-                <h4 className="text-white font-semibold text-sm uppercase tracking-wider">
-                  {category}
-                </h4>
-                <ul className="space-y-3">
-                  {links.map((link, index) => (
-                    <li key={index}>
-                      <a
-                        href="#"
-                        className="text-gray-400 hover:text-white transition-colors duration-200 text-sm block"
-                      >
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+  <div key={category} className="space-y-4">
+    <h4 className="text-white font-semibold text-sm uppercase tracking-wider">
+      {category}
+    </h4>
+    <ul className="space-y-3">
+      {links.map((link, index) => (
+        <li key={index}>
+          <a
+            href={link.href}
+            className="text-gray-400 hover:text-white transition-colors duration-200 text-sm block"
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+))}
           </div>
 
           {/* Social Links */}

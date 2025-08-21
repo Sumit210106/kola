@@ -154,15 +154,6 @@ export default function Contact() {
               <CardContent className="p-8">
                 <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
                 <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <MapPin className="w-6 h-6 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-medium mb-1">Address</h3>
-                      <p className="text-gray-900">
-                        India
-                      </p>
-                    </div>
-                  </div>
 
                   <div className="flex items-start space-x-4">
                     <Phone className="w-6 h-6 mt-1 flex-shrink-0" />
@@ -207,7 +198,7 @@ export default function Contact() {
                       <Award className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-gray-900">98%</div>
+                      <div className="text-2xl font-bold text-gray-900">99%</div>
                       <div className="text-sm text-gray-600">Client Satisfaction</div>
                     </div>
                   </div>
