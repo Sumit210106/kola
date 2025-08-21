@@ -16,18 +16,18 @@ const codeSnippets: CodeSnippet[] = [
     title: "AI Chat Component",
     language: "tsx",
     code: `const AIChatBot = () => {
-  const [messages, setMessages] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [mesg, setMssg] = useState([])
+  const [load, setLoad] = useState(false)
 
-  const sendMessage = async (text: string) => {
+  const Messg = async (text: str) => {
     setLoading(true)
-    const response = await fetch('/api/chat', {
+    const res = await fetch('/api/',{
       method: 'POST',
-      body: JSON.stringify({ message: text })
+      body: JSON.stringify({mesg:text })
     })
     const data = await response.json()
-    setMessages(prev => [...prev, data])
-    setLoading(false)
+    setMessg(prev => [...prev,data])
+    setLoad(false)
   }
 
   return (
@@ -47,29 +47,28 @@ const codeSnippets: CodeSnippet[] = [
     language: "ts",
     code: `export async function POST(request) {
   try {
-  const{ email,message } = await request.json()
+  const{email,mssg} = await request.json()
     
     // Validate input
     if (!email || !message) {
       return Response.json(
-        { error: 'Missing required fields' }, 
+        { error: 'Missing fields' }, 
         { status: 400 }
       )
     }
 
     // Process with AI
-    const aiResponse = await openai.chat({
+    const aiRes = await openai.chat({
       model: "gpt-4",
-      messages: [{ role: "user", content: message }]
     })
 
     return Response.json({ 
       success: true, 
-      data: aiResponse.choices[0].message 
+      data: aiResponse.
     })
   } catch (error) {
     return Response.json(
-      { error: 'Internal server error' }, 
+      { error: 'Internal error' }, 
       { status: 500 }
     )
   }
