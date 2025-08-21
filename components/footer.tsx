@@ -9,7 +9,6 @@ import {
   Bell,
   MapPin,
   Facebook,
-  Twitter,
   Linkedin,
   Instagram,
   ArrowUp,
@@ -47,7 +46,6 @@ const Footer: React.FC = () => {
     { icon: Facebook, href: "#", label: "Facebook" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
     { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
   ];
 
   return (
