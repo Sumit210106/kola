@@ -16,10 +16,13 @@ import {
   Search,
   PenTool,
   Share2,
-  ArrowRight,
+  Cpu,
+  DollarSign,
+  BarChart2,
+  Video,        // <-- Use this instead of VideoCamera
   CheckCircle,
-} from "lucide-react";
-
+  ArrowRight,
+} from "lucide-react"
 const services = [
   {
     icon: Globe,
@@ -100,7 +103,63 @@ const services = [
     color: "bg-indigo-50 text-indigo-600",
     borderColor: "border-indigo-200",
   },
-];
+  {
+    icon: Cpu,
+    title: "AI Apps & Tools",
+    description: `We turn AI prototypes into usable tools: secure auth, API/data integrations, logging and deployment. From small internal helpers to customer-facing apps, built with guardrails and dashboards to measure impact.`,
+    features: [
+      "AI Model Integration",
+      "Secure Authentication",
+      "Real-time Data Processing",
+      "Custom Dashboards & Reporting",
+      "API Integrations",
+    ],
+    color: "bg-teal-50 text-teal-600",
+    borderColor: "border-teal-200",
+  },
+  {
+    icon: DollarSign,
+    title: "Performance Marketing",
+    description: `Full‑funnel campaigns across Google, Meta, and LinkedIn. Offers, creatives, landing pages, tracking, and weekly optimisations focused on qualified leads and efficient spend, not vanity metrics.`,
+    features: [
+      "Full-Funnel Strategy",
+      "Custom Landing Pages",
+      "Conversion Optimized Ads",
+      "Granular Tracking & Attribution",
+      "Budget Optimization",
+    ],
+    color: "bg-yellow-50 text-yellow-600",
+    borderColor: "border-yellow-200",
+  },
+  {
+    icon: BarChart2,
+    title: "CRO & Analytics",
+    description: `Track what matters and lift conversion. GA4, Tag Manager, dashboards, event mapping, funnel analysis, A/B tests, heatmaps, and landing‑page tweaks so more visitors become leads and customers.`,
+    features: [
+      "GA4 & Tag Manager Setup",
+      "Conversion Funnel Analysis",
+      "A/B & Multivariate Testing",
+      "Heatmaps & User Behavior Insights",
+      "Custom Reporting Dashboards",
+    ],
+    color: "bg-cyan-50 text-cyan-600",
+    borderColor: "border-cyan-200",
+  },
+  {
+    icon: Video, // <-- Use Video here
+    title: "Video Production",
+    description: `Concept to final cut: brand films, product explainers, and short‑form content. Scripts, shoots, edits, and motion graphics—made for fast loading on web and social, and aligned to campaign goals.`,
+    features: [
+      "Creative Concept Development",
+      "Scriptwriting & Storyboarding",
+      "Professional Filming & Editing",
+      "Motion Graphics & Animation",
+      "Optimized Formats for Web & Social",
+    ],
+    color: "bg-red-50 text-red-600",
+    borderColor: "border-red-200",
+  },
+]
 
 export default function ServicesSection() {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
