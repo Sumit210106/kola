@@ -13,6 +13,7 @@ import {
   ArrowUp,
   Send,
 } from "lucide-react";
+import emailjs from "emailjs-com";
 
 type FooterLinksType = {
   [key: string]: string[];
@@ -20,6 +21,10 @@ type FooterLinksType = {
 
 const Footer: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setIsVisible(true);
@@ -49,6 +54,28 @@ const footerLinks: { [key: string]: { name: string; href: string }[] } = {
     { icon: Linkedin, href: "https://www.linkedin.com/company/kola-communications/", label: "LinkedIn" },
     { icon: Instagram, href: "https://www.instagram.com/p/DG5c5GTPtgh/?utm_source=ig_web_button_share_sheet&igsh=MWxod2s1NmM3aGs5NA==", label: "Instagram" },
   ];
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess(false);
+
+    try {
+      await emailjs.send(
+        "service_yayw0ip",
+        "template_dtw0ldw",
+        { user_email: email },
+        "y5rHQHu3EGXf5ihq8"
+      );
+      setSuccess(true);
+      setEmail("");
+    } catch (err) {
+      setError("Failed to subscribe. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <footer className="relative bg-black text-white">
@@ -111,21 +138,32 @@ const footerLinks: { [key: string]: { name: string; href: string }[] } = {
                 Get the latest insights delivered to your inbox.
               </p>
             </div>
-            <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6953F5] focus:border-transparent transition-all text-sm placeholder-gray-500"
-                />
-                <button
-                  className="px-6 py-3 bg-gradient-to-r from-[#6953F5] to-[#17142E] hover:from-[#7C60FC] hover:to-[#2D2850] text-white rounded-lg font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2"
-                >
-                  <Send className="w-4 h-4" />
-                  Subscribe
-                </button>
-              </div>
-            </div>
+            <form onSubmit={handleSubscribe} className="space-y-4">
+  <div className="flex flex-col sm:flex-row gap-3">
+    <input
+      type="email"
+      placeholder="Enter your email"
+      className="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6953F5] focus:border-transparent transition-all text-sm placeholder-gray-500"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      required
+    />
+    <button
+      type="submit"
+      disabled={loading}
+      className="px-6 py-3 bg-gradient-to-r from-[#6953F5] to-[#17142E] hover:from-[#7C60FC] hover:to-[#2D2850] text-white rounded-lg font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2"
+    >
+      <Send className="w-4 h-4" />
+      {loading ? "Subscribing..." : "Subscribe"}
+    </button>
+  </div>
+  {success && (
+    <p className="text-green-400 text-sm mt-2">Subscribed successfully!</p>
+  )}
+  {error && (
+    <p className="text-red-400 text-sm mt-2">{error}</p>
+  )}
+</form>
           </div>
         </div>
 
@@ -194,10 +232,10 @@ const footerLinks: { [key: string]: { name: string; href: string }[] } = {
             <h2 className="text-sm sm:text-base text-gray-400">
               Developed by{" "}
               <a
-                href="https://kolacommunications.com"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="font-medium text-white hover:text-purple-400 transition-colors duration-300"
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://kolacommunications.com"
               >
                 Kola Communications
               </a>
@@ -207,13 +245,13 @@ const footerLinks: { [key: string]: { name: string; href: string }[] } = {
       </div>
 
       {/* Scroll to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-[#6953F5] to-[#17142E] hover:from-[#7C60FC] hover:to-[#2D2850] rounded-lg flex items-center justify-center shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 z-50"
+      <div
         aria-label="Scroll to top"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-[#6953F5] to-[#17142E] hover:from-[#7C60FC] hover:to-[#2D2850] rounded-lg flex items-center justify-center shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 z-50"
+        onClick={scrollToTop}
       >
         <ArrowUp className="w-5 h-5 text-white" />
-      </button>
+      </div>
     </footer>
   );
 };

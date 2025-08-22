@@ -1,14 +1,14 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import emailjs from "emailjs-com"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
-import { MapPin, Phone, Mail, Users, Award, CheckCircle } from "lucide-react"
+import { Phone, Mail, Award, CheckCircle } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -17,6 +17,9 @@ export default function Contact() {
     companyName: "",
     message: "",
   })
+
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState<"success" | "error" | null>(null)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -28,36 +31,41 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+    setLoading(true)
+    setStatus(null)
+
+    emailjs
+      .send(
+        "service_yayw0ip", // replace with your EmailJS service ID
+        "template_5r30e4a", // replace with your EmailJS template ID
+        {
+          fullName: formData.fullName,
+          email: formData.email,
+          companyName: formData.companyName,
+          message: formData.message,
+        },
+        "y5rHQHu3EGXf5ihq8" // replace with your EmailJS public key
+      )
+      .then(
+        () => {
+          setStatus("success")
+          setFormData({
+            fullName: "",
+            email: "",
+            companyName: "",
+            message: "",
+          })
+        },
+        (error) => {
+          console.error("EmailJS Error:", error)
+          setStatus("error")
+        }
+      )
+      .finally(() => setLoading(false))
   }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden " id="contact">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-[#3D44C3]/10 to-[#2C349E]/5 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-[#2C349E]/10 to-[#3D44C3]/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-[#3D44C3]/5 to-[#2C349E]/5 rounded-full blur-3xl"></div>
-
-        {/* Geometric patterns */}
-        <div className="absolute top-20 left-10 w-4 h-4 bg-[#3D44C3]/20 rounded-full"></div>
-        <div className="absolute top-40 right-20 w-6 h-6 bg-[#2C349E]/15 rounded-full"></div>
-        <div className="absolute bottom-32 left-1/4 w-3 h-3 bg-[#3D44C3]/25 rounded-full"></div>
-        <div className="absolute bottom-20 right-1/3 w-5 h-5 bg-[#2C349E]/20 rounded-full"></div>
-        <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-[#3D44C3]/30 rounded-full"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-4 h-4 bg-[#2C349E]/25 rounded-full"></div>
-
-        {/* Simple dot pattern using CSS */}
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: "radial-gradient(circle, #3D44C3 1px, transparent 1px)",
-            backgroundSize: "30px 30px",
-          }}
-        ></div>
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
@@ -69,7 +77,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Side - Contact Form */}
           <div className="space-y-8">
-            <Card className="shadow-lg border-0  backdrop-blur-sm">
+            <Card className="shadow-lg border-0 backdrop-blur-sm">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a message</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -138,10 +146,18 @@ export default function Contact() {
 
                   <Button
                     type="submit"
+                    disabled={loading}
                     className="w-full bg-gradient-to-r from-[#3D44C3] to-[#2C349E] hover:from-[#2C349E] hover:to-[#1E2875] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
                   >
-                    Send Message
+                    {loading ? "Sending..." : "Send Message"}
                   </Button>
+
+                  {status === "success" && (
+                    <p className="text-green-600 text-sm mt-2">✅ Message sent successfully!</p>
+                  )}
+                  {status === "error" && (
+                    <p className="text-red-600 text-sm mt-2">❌ Failed to send message. Please try again.</p>
+                  )}
                 </form>
               </CardContent>
             </Card>
@@ -149,32 +165,28 @@ export default function Contact() {
 
           {/* Right Side - Contact Info & Stats */}
           <div className="space-y-8">
-            {/* Get in Touch Section */}
-            <Card className="shadow-lg border-0  text-black">
+            <Card className="shadow-lg border-0 text-black">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
                 <div className="space-y-6">
-
                   <div className="flex items-start space-x-4">
                     <Phone className="w-6 h-6 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium mb-1">Phone</h3>
-                     <p className="text-gray-900">+91-8108969630</p>
+                      <p className="text-gray-900">+91-8108969630</p>
                     </div>
                   </div>
-
                   <div className="flex items-start space-x-4">
                     <Mail className="w-6 h-6 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium mb-1">Email</h3>
-                     <p className="text-gray-900">business@kolacommunications.com</p>
+                      <p className="text-gray-900">business@kolacommunications.com</p>
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Ready to Get Started Section */}
             <Card className="shadow-lg border-0 bg-gray-100/80 backdrop-blur-sm">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">Ready to get started?</h2>
@@ -192,7 +204,6 @@ export default function Contact() {
                       <div className="text-sm text-gray-600">Projects Completed</div>
                     </div>
                   </div>
-
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 bg-gradient-to-r from-[#3D44C3] to-[#2C349E] rounded-full flex items-center justify-center">
                       <Award className="w-6 h-6 text-white" />
@@ -202,10 +213,6 @@ export default function Contact() {
                       <div className="text-sm text-gray-600">Client Satisfaction</div>
                     </div>
                   </div>
-
-                  
-
-                  
                 </div>
               </CardContent>
             </Card>
