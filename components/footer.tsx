@@ -8,7 +8,6 @@ import {
   Phone,
   Bell,
   MapPin,
-  Facebook,
   Linkedin,
   Instagram,
   ArrowUp,
@@ -47,9 +46,8 @@ const footerLinks: { [key: string]: { name: string; href: string }[] } = {
 
 
   const socialLinks: { icon: React.ElementType; href: string; label: string }[] = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/kola-communications/", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/p/DG5c5GTPtgh/?utm_source=ig_web_button_share_sheet&igsh=MWxod2s1NmM3aGs5NA==", label: "Instagram" },
   ];
 
   return (

@@ -43,15 +43,11 @@ const testimonialsData = [
   },
 ];
 
-const projectColors = {
-  "Creative Campaigns":
-    "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100",
-  "Design & Strategy":
-    "bg-purple-50 text-purple-700 border-purple-200 hover:bg-purple-100",
-  "Content & Design":
-    "bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100",
-  "Branding & Marketing":
-    "bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100",
+const projectColors: Record<string, string> = {
+  "Creative Campaigns": "bg-pink-500",
+  "Design & Strategy": "bg-blue-500",
+  "Content & Design": "bg-green-500",
+  "Branding & Marketing": "bg-yellow-500",
 };
 
 interface TestimonialsProps {

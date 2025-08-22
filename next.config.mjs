@@ -1,14 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: "export",     // Required for static hosting
   images: {
-    unoptimized: true,
+    unoptimized: true,  // Avoids Next.js Image Optimization (not supported on static)
   },
-}
+  trailingSlash: true,  // Important for static hosting to avoid 404s
+};
 
-export default nextConfig
+export default nextConfig;

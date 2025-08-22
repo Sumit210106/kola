@@ -19,16 +19,15 @@ export default function HeroScrollDemo() {
       >
         <div className="flex justify-center">
           <iframe
-            src="https://www.instagram.com/reel/DJ1Co45PvPK/embed"
-            width="400"
+            src="..."
+            width="1280"
             height="720"
             scrolling="no"
-            allowtransparency="true"
+            allowTransparency
             allow="autoplay"
             allowFullScreen
-            muted
-            loop
-          ></iframe>
+
+          />
         </div>
       </ContainerScroll>
     </div>
