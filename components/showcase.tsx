@@ -12,7 +12,7 @@ const projectsData = [
     category: "Website Development",
     tags: ["WordPress"],
     date: "2024",
-    image: "/projects/Purva Desai & Co.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Purva%20Desai%20&%20Co.jpeg",
     description: `Client Requirement:
 Purva Desai & Co required a WordPress website that captured the creative spirit of a social media agency. The objective was to highlight flagship projects on the homepage and showcase how these campaigns contributed to client growth and brand positioning.
 
@@ -26,7 +26,7 @@ Our team designed an animation-rich website powered by JavaScript for an engagin
     category: "Website Development",
     tags: ["Custom Coded"],
     date: "2024",
-    image: "/projects/Revent AI.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Revent%20AI.jpeg",
     description: `Client Requirement:
 Revent AI sought a custom-coded platform that demonstrated their advanced AI capabilities. The backend needed to integrate seamlessly with Python-based models, with the ability to process uploaded files live and update presentations dynamically within seconds.
 
@@ -40,7 +40,7 @@ The project resulted in a custom-built portal where users could upload and proce
     category: "Website Development",
     tags: ["WordPress"],
     date: "2024",
-    image: "/projects/Anantapur-II REZ Phase-I.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Anantapur-II%20REZ%20Phase-I.jpeg",
     description: `Client Requirement:
 Resonia (previously Sterlite Power) required a professional company profile website for their flagship Anantapur-II REZ Phase-I transmission project. The goal was to highlight scale and innovation while presenting a credible, stakeholder-friendly digital presence.
 
@@ -54,7 +54,7 @@ To meet these goals, a clean and structured WordPress site was developed with la
     category: "Website Development",
     tags: ["Custom Coded"],
     date: "2024",
-    image: "/projects/Veena Developers.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Veena%20Developers.jpeg",
     description: `Client Requirement:
 Veena Developers needed a premium website to highlight their real estate projects with high-quality visuals and complete property details. Another requirement was optimization for speed across regions to ensure a smooth experience for global audiences.
 
@@ -68,7 +68,7 @@ A custom-coded website was built with immersive digital design to resonate with 
     category: "Website Development",
     tags: ["WordPress"],
     date: "2024",
-    image: "/projects/Nangalbibra-Bongaigaon Transmission Line.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Nangalbibra-Bongaigaon%20Transmission%20Line.jpeg",
     description: `Client Requirement:
 Resonia (previously Sterlite Power) required a project website for the Nangalbibra-Bongaigaon Transmission Line. The focus was on highlighting strategic importance, key milestones, and providing stakeholders with an accessible digital reference for project progress.
 
@@ -82,7 +82,7 @@ The site was developed on WordPress with a clear structure to present objectives
     category: "E-commerce Website Development",
     tags: ["WordPress WooCommerce"],
     date: "2024",
-    image: "/projects/Zevana Jewels.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Zevana%20Jewels.jpeg",
     description: `Client Requirement:
 Zevana Jewels required a luxury-inspired e-commerce store to showcase and sell premium jewelry online. The site needed to combine elegant design with high-quality product visuals and seamless shopping functionality across devices.
 
@@ -96,7 +96,7 @@ A WooCommerce-powered store was created with refined aesthetics and high-resolut
     category: "Website Development",
     tags: ["WordPress"],
     date: "2024",
-    image: "/projects/Kanodia Enterprises.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Kanodia%20Enterprises.jpeg",
     description: `Client Requirement:
 Kanodia Enterprises needed a professional digital presence to represent their enterprise online. The objective was to showcase services, demonstrate industry expertise, and provide clear contact information for prospective clients.
 
@@ -110,7 +110,7 @@ A modern WordPress website was designed with a structured layout highlighting se
     category: "Website Development",
     tags: ["WordPress"],
     date: "2024",
-    image: "/projects/Acha Parhlo.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Acha%20Parhlo.jpeg",
     description: `Client Requirement:
 Acha Parhlo required a vibrant and engaging platform to represent their youthful, content-driven brand. The site needed to support regular publishing, attract a young audience, and perform strongly on search engines.
 
@@ -124,7 +124,7 @@ The solution was a WordPress site built with interactive visuals and a structure
     category: "E-commerce Website Development",
     tags: ["Shopify"],
     date: "2024",
-    image: "/projects/Livyor.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Livyor.jpeg",
     description: `Client Requirement:
 Livyor sought a scalable Shopify-based e-commerce solution for their lifestyle products. The requirements included sleek design, smooth navigation, and a secure, optimized platform to deliver a superior shopping experience.
 
@@ -138,7 +138,7 @@ A Shopify store was developed with a modern, conversion-oriented layout. Product
     category: "E-commerce Website Development",
     tags: ["WordPress WooCommerce"],
     date: "2024",
-    image: "/projects/Gcube Ethnic.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Gcube%20Ethnic.jpeg",
     description: `Client Requirement:
 Gcube Ethnic required an e-commerce website to sell ethnic wear collections online. The goal was to reflect the cultural richness of the brand while ensuring smooth navigation, secure payments, and a reliable shopping experience.
 
@@ -152,7 +152,7 @@ A WooCommerce store was built with vibrant visuals and detailed product descript
     category: "E-commerce Website Development",
     tags: ["Shopify"],
     date: "2024",
-    image: "/projects/Shramak.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Shramak.jpeg",
     description: `Client Requirement:
 Shramak required a Shopify-based platform to showcase and sell their fashion line. The project demanded a fast, mobile-first website with user-friendly navigation and conversion-focused product pages.
 
@@ -166,7 +166,7 @@ A Shopify store was created with clean layouts, intuitive navigation, and produc
     category: "Content & SEO",
     tags: ["Content Writing", "SEO"],
     date: "2024",
-    image: "/projects/Arsenal Core.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Arsenal%20Core.jpeg",
     description: `Client Requirement:
 Arsenal Core needed consistent, SEO-optimized content to grow their online presence. The aim was to create targeted articles for Arsenal fans that ranked well, attracted organic traffic, and built authority in the niche.
 
@@ -180,7 +180,7 @@ A tailored content strategy was implemented, producing keyword-rich articles tha
     category: "Content & SEO",
     tags: ["Content Writing", "SEO"],
     date: "2024",
-    image: "/projects/Premier League News Now.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Premier%20League%20News%20Now.jpeg",
     description: `Client Requirement:
 The platform required a structured editorial and SEO approach to scale traffic and strengthen its position in the competitive football news space. Timely coverage and strong search performance were the top priorities.
 
@@ -194,7 +194,7 @@ High-quality football content was produced consistently, aligned with trending t
     category: "Website Development",
     tags: ["WordPress"],
     date: "2024",
-    image: "/projects/BluFeather Solutions.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/BluFeather%20Solutions.jpeg",
     description: `Client Requirement:
 BluFeather Solutions required a business website to present their services effectively and build a professional digital identity. The focus was on clarity, branding, and trust-building for client acquisition.
 
@@ -208,7 +208,7 @@ A WordPress site was developed with a clean and professional design. Services we
     category: "Website Development",
     tags: ["WordPress"],
     date: "2024",
-    image: "/projects/Aashiyaanaa Villa.jpeg",
+    image: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Aashiyaanaa%20Villa.jpeg",
     description: `Client Requirement:
 Aashiyaanaa Villa needed a digital platform to promote their luxury properties. The aim was to highlight interiors, amenities, and booking details while emphasizing exclusivity and premium lifestyle appeal.
 

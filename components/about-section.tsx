@@ -11,7 +11,7 @@ import {
   Quote,
 } from "lucide-react";
 import Image from "next/image";
-
+const image = 'https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/modern-office-collaboration.png';
 const values = [
   {
     icon: Target,
@@ -96,7 +96,7 @@ export default function AboutSection() {
           <div className="animate-fade-in-up">
             <div className="relative ">
               <Image
-                src="/modern-office-collaboration.png"
+                src={image}
                 alt="Kola Communication Team"
                 width={600}
                 height={500}

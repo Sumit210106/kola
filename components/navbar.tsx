@@ -6,6 +6,8 @@ import { Menu, X, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
+const logo2 = 'https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/logo-2.png'
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -43,10 +45,11 @@ export default function Navbar() {
       <div className="px-4 py-2 relative">
         <div className="flex items-center justify-between">
           {/* Enhanced Logo */}
+          {/* logo2 */}
           <div className="flex items-center space-x-3 group rounded-xl">
             <div className="w-20 h-10 relative transition-transform duration-300">
               <a href="#">
-                <Image src="/logo-2.png" alt="Kola Communication" fill className="object-cover" />
+                <Image src={logo2} alt="Kola Communication" fill className="object-cover" />
               </a>
               
             </div>

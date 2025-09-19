@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import logo from "@/public/kola-logo.png"; 
+
 import {
   Mail,
   Phone,
@@ -14,7 +14,7 @@ import {
   Send,
 } from "lucide-react";
 import emailjs from "emailjs-com";
-
+const logo = 'https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/kola-logo.png';
 type FooterLinksType = {
   [key: string]: string[];
 };
