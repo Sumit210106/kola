@@ -12,10 +12,27 @@ const products = [
     thumbnail: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Purva%20Desai%20&%20Co.jpeg",
   },
   {
+    title: "Tazaari",
+    link: "https://tazaari.com/",
+    thumbnail: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/tazaari.jpeg",
+  },
+  {
+    title: "Dhanuka Investments",
+    link: "https://www.dhanukainvestments.com/",
+    thumbnail: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/dhanuka.jpeg",
+  },
+
+  {
     title: "Revent AI",
     link: "https://revent.ai",
     thumbnail: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/Revent%20AI.jpeg",
   },
+  {
+  title: "CarpetCuts",
+  link: "https://carpetcuts.au/",
+  thumbnail: "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/carpetcuts.jpeg",
+}
+,
   {
     title: "Anantapur-II REZ Phase-I",
     link: "https://anantapur2rez.com",
