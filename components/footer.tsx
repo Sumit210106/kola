@@ -14,7 +14,8 @@ import {
   Send,
 } from "lucide-react";
 import emailjs from "emailjs-com";
-const logo = 'https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/kola-logo.png';
+const logo =
+  "https://oskiqdthpejzihtjybwc.supabase.co/storage/v1/object/public/kola-website%20images/kola-logo.png";
 type FooterLinksType = {
   [key: string]: string[];
 };
@@ -33,26 +34,37 @@ const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-const footerLinks: { [key: string]: { name: string; href: string }[] } = {
-  Services: [
-    { name: "Website Development", href: "#services" },
-    { name: "AI Apps & Tools", href: "#services" },
-    { name: "Search Engine Optimization", href: "#services" },
-    { name: "Performance Marketing", href: "#services" },
-    { name: "Content Creation", href: "#services" },
-    { name: "Social Media Marketing", href: "#services" },
-    { name: "App Development", href: "#services" },
-  ],
-  Company: [
-    { name: "About Us", href: "#about" },
-    { name: "Contact Us", href: "#contact" },
-  ],
-};
+  const footerLinks: { [key: string]: { name: string; href: string }[] } = {
+    Services: [
+      { name: "Website Development", href: "#services" },
+      { name: "AI Apps & Tools", href: "#services" },
+      { name: "Search Engine Optimization", href: "#services" },
+      { name: "Performance Marketing", href: "#services" },
+      { name: "Content Creation", href: "#services" },
+      { name: "Social Media Marketing", href: "#services" },
+      { name: "App Development", href: "#services" },
+    ],
+    Company: [
+      { name: "About Us", href: "#about" },
+      { name: "Contact Us", href: "#contact" },
+    ],
+  };
 
-
-  const socialLinks: { icon: React.ElementType; href: string; label: string }[] = [
-    { icon: Linkedin, href: "https://www.linkedin.com/company/kola-communications/", label: "LinkedIn" },
-    { icon: Instagram, href: "https://www.instagram.com/p/DG5c5GTPtgh/?utm_source=ig_web_button_share_sheet&igsh=MWxod2s1NmM3aGs5NA==", label: "Instagram" },
+  const socialLinks: {
+    icon: React.ElementType;
+    href: string;
+    label: string;
+  }[] = [
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/kola-communications/",
+      label: "LinkedIn",
+    },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/p/DG5c5GTPtgh/?utm_source=ig_web_button_share_sheet&igsh=MWxod2s1NmM3aGs5NA==",
+      label: "Instagram",
+    },
   ];
 
   const handleSubscribe = async (e: React.FormEvent) => {
@@ -112,88 +124,35 @@ const footerLinks: { [key: string]: { name: string; href: string }[] } = {
 
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer">
+              {/* Email */}
+              <a
+                href="mailto:business@kolacommunications.com"
+                className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer"
+              >
                 <Mail className="w-4 h-4" />
                 <span className="text-sm">business@kolacommunications.com</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer">
+              </a>
+
+              {/* Phone */}
+              <a
+                href="tel:+918108969630"
+                className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer"
+              >
                 <Phone className="w-4 h-4" />
                 <span className="text-sm">+91-8108969630</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer">
+              </a>
+              <a
+                href="https://maps.app.goo.gl/oSEbseq5kjWGG8eJ7?g_st=ipc"
+                target="_blank" rel="noopener noreferrer"
+                className="flex items-center space-x-3 text-gray-300 hover:text-white transition-colors cursor-pointer"
+              >
                 <MapPin className="w-4 h-4" />
-                <span className="text-sm">Mumbai, Maharashtra, India</span>
-              </div>
+                <span className="text-sm">
+                  C42, Modi Nagar CHS, Opposite Wanjawadi, Kandivali West,
+                  Mumbai - 400067
+                </span>
+              </a>
             </div>
-          </div>
-
-          {/* Newsletter Subscription */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-xl text-white mb-3 flex items-center">
-                Stay Updated with our Newsletter
-                <Bell className="inline-block ml-2" size={24} />
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                Get the latest insights delivered to your inbox.
-              </p>
-            </div>
-            <form onSubmit={handleSubscribe} className="space-y-4">
-  <div className="flex flex-col sm:flex-row gap-3">
-    <input
-      type="email"
-      placeholder="Enter your email"
-      className="flex-1 px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6953F5] focus:border-transparent transition-all text-sm placeholder-gray-500"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-      required
-    />
-    <button
-      type="submit"
-      disabled={loading}
-      className="px-6 py-3 bg-gradient-to-r from-[#6953F5] to-[#17142E] hover:from-[#7C60FC] hover:to-[#2D2850] text-white rounded-lg font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2"
-    >
-      <Send className="w-4 h-4" />
-      {loading ? "Subscribing..." : "Subscribe"}
-    </button>
-  </div>
-  {success && (
-    <p className="text-green-400 text-sm mt-2">Subscribed successfully!</p>
-  )}
-  {error && (
-    <p className="text-red-400 text-sm mt-2">{error}</p>
-  )}
-</form>
-          </div>
-        </div>
-
-        {/* Links + Social */}
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 transition-all duration-1000 delay-200 transform ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
-        >
-          {/* Links Section */}
-          <div className="grid grid-cols-2 gap-8">
-            {Object.entries(footerLinks).map(([category, links]) => (
-  <div key={category} className="space-y-4">
-    <h4 className="text-white font-semibold text-sm uppercase tracking-wider">
-      {category}
-    </h4>
-    <ul className="space-y-3">
-      {links.map((link, index) => (
-        <li key={index}>
-          <a
-            href={link.href}
-            className="text-gray-400 hover:text-white transition-colors duration-200 text-sm block"
-          >
-            {link.name}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-))}
           </div>
 
           {/* Social Links */}
@@ -218,6 +177,35 @@ const footerLinks: { [key: string]: { name: string; href: string }[] } = {
             </div>
           </div>
         </div>
+        {/* Links + Social */}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 transition-all duration-1000 delay-200 transform ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+        >
+          {/* Links Section */}
+          <div className="grid grid-cols-2 gap-8">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category} className="space-y-4">
+                <h4 className="text-white font-semibold text-sm uppercase tracking-wider">
+                  {category}
+                </h4>
+                <ul className="space-y-3">
+                  {links.map((link, index) => (
+                    <li key={index}>
+                      <a
+                        href={link.href}
+                        className="text-gray-400 hover:text-white transition-colors duration-200 text-sm block"
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Bottom Section */}
         <div
@@ -226,7 +214,8 @@ const footerLinks: { [key: string]: { name: string; href: string }[] } = {
           }`}
         >
           <p className="text-gray-400 text-sm mb-6 md:mb-0">
-            © {new Date().getFullYear()} Kola Communications. All rights reserved.
+            © {new Date().getFullYear()} Kola Communications. All rights
+            reserved.
           </p>
           <div className="flex items-center space-x-2">
             <h2 className="text-sm sm:text-base text-gray-400">

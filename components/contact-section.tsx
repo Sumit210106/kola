@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import emailjs from "emailjs-com"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent } from "@/components/ui/card"
-import { Phone, Mail, Award, CheckCircle } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import emailjs from "emailjs-com";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
+import { Phone, MapPin, Mail, Award, CheckCircle } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,23 +16,25 @@ export default function Contact() {
     email: "",
     companyName: "",
     message: "",
-  })
+  });
 
-  const [loading, setLoading] = useState(false)
-  const [status, setStatus] = useState<"success" | "error" | null>(null)
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<"success" | "error" | null>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setStatus(null)
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null);
 
     emailjs
       .send(
@@ -48,29 +50,33 @@ export default function Contact() {
       )
       .then(
         () => {
-          setStatus("success")
+          setStatus("success");
           setFormData({
             fullName: "",
             email: "",
             companyName: "",
             message: "",
-          })
+          });
         },
         (error) => {
-          console.error("EmailJS Error:", error)
-          setStatus("error")
+          console.error("EmailJS Error:", error);
+          setStatus("error");
         }
       )
-      .finally(() => setLoading(false))
-  }
+      .finally(() => setLoading(false));
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden " id="contact">
+    <div
+      className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden "
+      id="contact"
+    >
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Get in touch with our team. We're here to help you transform your digital presence.
+            Get in touch with our team. We're here to help you transform your
+            digital presence.
           </p>
         </div>
 
@@ -79,10 +85,15 @@ export default function Contact() {
           <div className="space-y-8">
             <Card className="shadow-lg border-0 backdrop-blur-sm">
               <CardContent className="p-8">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a message</h2>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+                  Send us a message
+                </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <Label htmlFor="fullName" className="text-sm font-medium text-gray-700">
+                    <Label
+                      htmlFor="fullName"
+                      className="text-sm font-medium text-gray-700"
+                    >
                       Full Name *
                     </Label>
                     <Input
@@ -98,7 +109,10 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                    <Label
+                      htmlFor="email"
+                      className="text-sm font-medium text-gray-700"
+                    >
                       Email *
                     </Label>
                     <Input
@@ -114,7 +128,10 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <Label htmlFor="companyName" className="text-sm font-medium text-gray-700">
+                    <Label
+                      htmlFor="companyName"
+                      className="text-sm font-medium text-gray-700"
+                    >
                       Company Name
                     </Label>
                     <Input
@@ -129,7 +146,10 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <Label htmlFor="message" className="text-sm font-medium text-gray-700">
+                    <Label
+                      htmlFor="message"
+                      className="text-sm font-medium text-gray-700"
+                    >
                       Message *
                     </Label>
                     <Textarea
@@ -153,10 +173,14 @@ export default function Contact() {
                   </Button>
 
                   {status === "success" && (
-                    <p className="text-green-600 text-sm mt-2">✅ Message sent successfully!</p>
+                    <p className="text-green-600 text-sm mt-2">
+                      ✅ Message sent successfully!
+                    </p>
                   )}
                   {status === "error" && (
-                    <p className="text-red-600 text-sm mt-2">❌ Failed to send message. Please try again.</p>
+                    <p className="text-red-600 text-sm mt-2">
+                      ❌ Failed to send message. Please try again.
+                    </p>
                   )}
                 </form>
               </CardContent>
@@ -169,18 +193,47 @@ export default function Contact() {
               <CardContent className="p-8">
                 <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
                 <div className="space-y-6">
+                  {/* Phone Section */}
                   <div className="flex items-start space-x-4">
                     <Phone className="w-6 h-6 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium mb-1">Phone</h3>
-                      <p className="text-gray-900">+91-8108969630</p>
+                      <a
+                        href="tel:+918108969630"
+                        className="text-gray-900 hover:text-blue-600 transition-colors"
+                      >
+                        +91-8108969630
+                      </a>
                     </div>
                   </div>
+
+                  {/* Email Section */}
                   <div className="flex items-start space-x-4">
                     <Mail className="w-6 h-6 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-medium mb-1">Email</h3>
-                      <p className="text-gray-900">business@kolacommunications.com</p>
+                      <a
+                        href="mailto:business@kolacommunications.com"
+                        className="text-gray-900 hover:text-blue-600 transition-colors"
+                      >
+                        business@kolacommunications.com
+                      </a>
+                    </div>
+                  </div>
+                  {/* address */}
+                  <div className="flex items-start space-x-4">
+                    <MapPin className="w-6 h-6 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-medium mb-1">Location</h3>
+                      <a
+                        href="https://maps.app.goo.gl/oSEbseq5kjWGG8eJ7?g_st=ipc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-900 hover:text-blue-600 transition-colors"
+                      >
+                        C42, Modi Nagar CHS, Opposite Wanjawadi, Kandivali West,
+                        Mumbai - 400067
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -189,9 +242,12 @@ export default function Contact() {
 
             <Card className="shadow-lg border-0 bg-gray-100/80 backdrop-blur-sm">
               <CardContent className="p-8">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Ready to get started?</h2>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                  Ready to get started?
+                </h2>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Join over 100+ satisfied clients who have transformed their digital presence with Kola Communication.
+                  Join over 100+ satisfied clients who have transformed their
+                  digital presence with Kola Communication.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -200,8 +256,12 @@ export default function Contact() {
                       <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-gray-900">100+</div>
-                      <div className="text-sm text-gray-600">Projects Completed</div>
+                      <div className="text-2xl font-bold text-gray-900">
+                        100+
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        Projects Completed
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -209,8 +269,12 @@ export default function Contact() {
                       <Award className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-gray-900">99%</div>
-                      <div className="text-sm text-gray-600">Client Satisfaction</div>
+                      <div className="text-2xl font-bold text-gray-900">
+                        99%
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        Client Satisfaction
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -220,5 +284,5 @@ export default function Contact() {
         </div>
       </div>
     </div>
-  )
+  );
 }
